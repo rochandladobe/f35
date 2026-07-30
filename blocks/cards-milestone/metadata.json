@@ -1,0 +1,41 @@
+{
+  "variantName": "cards-milestone",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/f35/global-enterprise/belgium.html",
+    "originPage": "F-35 partner-country page (Belgium)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "milestone-timeline-grid",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + bold year label + short description, borderless 3-up grid",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "program milestone / timeline grids (image + year + description)",
+      "borderless multi-row item grids where each item leads with a year or date label",
+      "partner-country 'Program Milestones' rows"
+    ],
+    "notSuitableFor": [
+      "bordered news teaser grids with read-more links (use cards-news)",
+      "icon/stat bands with labels baked into images (use cards-specs)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/f35/global-enterprise/belgium",
+      "/f35/global-enterprise/czech-republic"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-30T18:10:05.303705+00:00"
+  }
+}

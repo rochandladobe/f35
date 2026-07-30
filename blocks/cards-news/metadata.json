@@ -1,0 +1,41 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/",
+    "originPage": "F-35 homepage (content-page template)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "news-teaser-grid",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + date + title + description + read-more link",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "news and article teaser grids",
+      "repeating item cards with image, date, title, description and a read-more link",
+      "content-page and news landing 'latest updates' rows"
+    ],
+    "notSuitableFor": [
+      "single side-by-side promo (use columns-promo)",
+      "rotating/interactive galleries (use carousel-social)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index",
+      "/f35/news-and-features/nato-allies-expand-f-35-integration-in-northern-europe-through-multinational-weapons-training-in-the-netherlands"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-30T18:20:00.000Z"
+  }
+}

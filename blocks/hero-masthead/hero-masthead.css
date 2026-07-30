@@ -1,0 +1,145 @@
+/* hero-masthead — full-bleed masthead hero.
+   Design values extracted from f35.com source (div.bg-white > div:nth-child(1)):
+   full-bleed background photo (.bannerBlock) with an overlaid semi-transparent
+   content panel (.semiTrans) holding a navy heading, description and blue CTA. */
+
+/* full-bleed: escape the section's max-width / padding constraints */
+.hero-masthead-container .hero-masthead-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+/* block = full-bleed background-photo container (source .bannerBlock: cover / 50% 50% / no-repeat) */
+.hero-masthead {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* only reserve masthead height when a background photo is present (source min-height: 40vh) */
+.hero-masthead:not(.no-image) {
+  min-height: 40vh;
+  background-color: var(--brand-navy);
+}
+
+/* authored picture becomes the full-bleed background image */
+.hero-masthead picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+.hero-masthead picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* row wrapper — keep content above the background photo */
+.hero-masthead > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* content cell = overlaid semi-transparent panel (source .semiTrans) */
+.hero-masthead > div > div {
+  box-sizing: border-box;
+  max-width: 50%;
+  margin: 16px 0 16px 8.33%; /* source: 16px 0 16px 32.5px (offset-1) at mobile */
+  padding: 0 15px;
+  background-color: rgb(255 255 255 / 80%);
+}
+
+/* clear the floated CTA so the panel encloses it */
+.hero-masthead > div > div::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* heading (source .bannerTitle) — NOT uppercase, brand navy, condensed display face */
+.hero-masthead h1,
+.hero-masthead h2,
+.hero-masthead h3 {
+  margin: 7px 0 16px;
+  color: var(--brand-navy);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* description (source .semiTrans body copy) — hidden below the md breakpoint on source */
+.hero-masthead p {
+  display: none;
+  margin: 0 0 16px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.2;
+}
+
+/* the CTA lives in its own paragraph — always show it */
+.hero-masthead p:last-child {
+  display: block;
+  margin: 0;
+}
+
+/* CTA (source .actionButton) */
+.hero-masthead a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 7px 0 15px;
+  padding: 7px 0;
+  border: 2px solid var(--brand-navy);
+  border-radius: 0;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.hero-masthead a:hover,
+.hero-masthead a:focus-visible {
+  color: var(--brand-navy);
+  text-decoration: none;
+  box-shadow: 0 2px 3px 1px rgb(0 0 0 / 28%);
+}
+
+@media (width >= 900px) {
+  .hero-masthead > div > div {
+    max-width: 41.6667%; /* source col-md-5 */
+    margin: 48px 0 48px 8.33%; /* source: 48px 0 48px 106.6px (offset-1) */
+  }
+
+  .hero-masthead h1,
+  .hero-masthead h2,
+  .hero-masthead h3 {
+    font-size: 37px; /* source 2em over 18.67px base */
+    line-height: 1.2;
+  }
+
+  /* description shown from md up */
+  .hero-masthead p {
+    display: block;
+  }
+
+  /* CTA floats to the bottom-right of the panel, sized to its content */
+  .hero-masthead a {
+    display: inline-block;
+    float: right;
+    width: auto;
+    padding: 7px 30px;
+  }
+}

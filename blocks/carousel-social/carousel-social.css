@@ -1,0 +1,204 @@
+/* carousel-social — "Follow Us on Social Media" multi-item card carousel.
+   Design extracted from https://www.f35.com/f35/ (#homeSectionFive):
+   navy band, white cards (~300px) with preview image + centered navy title,
+   brand-blue rectangular arrows and circular dot pagination. */
+
+.carousel-social {
+  background-color: var(--brand-navy);
+  background-image: url("https://www.f35.com/content/dam/lockheed-martin/aero/f35/images/bgWingBottom.png");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding: 40px 16px 32px;
+}
+
+.carousel-social .carousel-social-slides-container {
+  position: relative;
+}
+
+.carousel-social .carousel-social-slides,
+.carousel-social .carousel-social-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-social .carousel-social-slides {
+  display: flex;
+  gap: 24px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-social .carousel-social-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Card --- */
+.carousel-social .carousel-social-slide {
+  flex: 0 0 260px;
+  scroll-snap-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+/* Preview image on top (source: 300x181, ~5:3, cover) */
+.carousel-social .carousel-social-slide .carousel-social-slide-image {
+  margin: 0;
+}
+
+.carousel-social .carousel-social-slide .carousel-social-slide-image picture,
+.carousel-social .carousel-social-slide .carousel-social-slide-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 300 / 181;
+  object-fit: cover;
+}
+
+/* White card body with centered navy title */
+.carousel-social .carousel-social-slide .carousel-social-slide-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 20px 28px;
+  background-color: #fff;
+}
+
+.carousel-social .carousel-social-slide .carousel-social-slide-content h3 {
+  margin: 0;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* The duplicate link becomes a full-card overlay (whole card clickable, like source) */
+.carousel-social .carousel-social-slide .carousel-social-slide-content p {
+  margin: 0;
+}
+
+.carousel-social .carousel-social-slide .carousel-social-slide-content .button-container {
+  margin: 0;
+}
+
+.carousel-social .carousel-social-slide .carousel-social-slide-content a {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  font-size: 0;
+  color: transparent;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+/* --- Slide indicators (dots) --- */
+.carousel-social .carousel-social-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 30px;
+  padding: 24px 12px 4px;
+  line-height: 0;
+}
+
+.carousel-social .carousel-social-slide-indicator button {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.carousel-social .carousel-social-slide-indicator button:disabled,
+.carousel-social .carousel-social-slide-indicator button:hover,
+.carousel-social .carousel-social-slide-indicator button:focus-visible {
+  background-color: var(--brand-blue);
+}
+
+/* --- Navigation arrows (brand-blue rectangular tabs) --- */
+.carousel-social .carousel-social-navigation-buttons {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-social .carousel-social-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--brand-blue);
+  pointer-events: auto;
+  transition: background-color 0.2s;
+}
+
+.carousel-social .carousel-social-navigation-buttons button:hover,
+.carousel-social .carousel-social-navigation-buttons button:focus-visible {
+  background-color: var(--brand-navy-dark);
+}
+
+.carousel-social .carousel-social-navigation-buttons button::after {
+  display: block;
+  content: "";
+  border: 3px solid #fff;
+  border-bottom: 0;
+  border-left: 0;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-social .carousel-social-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+@media (width >= 600px) {
+  .carousel-social .carousel-social-slides {
+    gap: 40px;
+  }
+
+  .carousel-social .carousel-social-slide {
+    flex: 0 0 300px;
+  }
+
+  .carousel-social .carousel-social-navigation-buttons {
+    top: 135px;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-social {
+    padding: 56px 48px 40px;
+  }
+
+  .carousel-social .carousel-social-slides {
+    gap: 50px;
+  }
+}

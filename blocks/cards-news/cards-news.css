@@ -1,0 +1,111 @@
+/* cards-news — F-35 "News & Features" teaser cards.
+   Values extracted from https://www.f35.com/f35/index.html (#homeSectionThree). */
+
+.cards-news > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (width >= 900px) {
+  .cards-news > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+/* card */
+.cards-news > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 28%) 0 2px 3px 1px;
+}
+
+/* image + date tag */
+.cards-news .cards-news-card-image {
+  position: relative;
+  line-height: 0;
+}
+
+.cards-news .cards-news-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 300 / 166;
+  object-fit: cover;
+}
+
+.cards-news .cards-news-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 2px 12px 3px;
+  background-color: var(--brand-navy);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 16.8px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* body */
+.cards-news .cards-news-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 20px 20px;
+}
+
+.cards-news .cards-news-card-body h3 {
+  margin: 0 0 0.5em;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: 20.5px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.cards-news .cards-news-card-body p {
+  margin: 0;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 18.67px;
+  line-height: 1.2;
+}
+
+/* Read More link — reset EDS button decoration back to a plain navy link */
+.cards-news .cards-news-readmore {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: right;
+}
+
+.cards-news .cards-news-readmore.button-container {
+  display: block;
+}
+
+.cards-news .cards-news-readmore a.button:any-link,
+.cards-news .cards-news-readmore a:any-link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: 18.67px;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.cards-news .cards-news-readmore a::after {
+  content: " \00bb";
+}

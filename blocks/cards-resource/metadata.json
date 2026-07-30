@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-resource",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-30T18:12:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/f35/mediakit.html",
+    "originPage": "Media Kit page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "resource-download-grid",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon banner image + title + download/access CTA link (whole card is a link)",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "media kit / press resource download grids (fact sheets, product cards, photo galleries)",
+      "repeating item cards where each card is an icon banner + title + a download or access CTA",
+      "document/asset link tiles with a bordered card treatment"
+    ],
+    "notSuitableFor": [
+      "news / article teaser grids with photos, dates and read-more (use cards-news)",
+      "borderless icon stat bands (use cards-specs)",
+      "milestone / timeline grids with year labels (use cards-milestone)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/f35/mediakit"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-30T18:12:00.000Z"
+  }
+}

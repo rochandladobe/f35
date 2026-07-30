@@ -1,0 +1,38 @@
+{
+  "variantName": "carousel-social",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/",
+    "originPage": "F-35 homepage (content-page template)",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "social-media-carousel",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image | icon + title + profile link (per slide)",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "rotating multi-item galleries with prev/next controls and dot pagination",
+      "social media follow-us card sliders",
+      "content-page bottom engagement carousels"
+    ],
+    "notSuitableFor": [
+      "static grids of items (use cards-news)",
+      "single side-by-side promos (use columns-promo)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-30T00:00:00.000Z"
+  }
+}
