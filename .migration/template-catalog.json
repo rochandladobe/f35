@@ -1,0 +1,146 @@
+{
+  "templates": [
+    {
+      "name": "content-page",
+      "representativePages": [
+        "https://www.f35.com/",
+        "https://www.f35.com/f35/about/5th-gen-capabilities.html",
+        "https://www.f35.com/f35/news-and-features.html"
+      ],
+      "urls": [
+        "https://www.f35.com/",
+        "https://www.f35.com/f35/about.html",
+        "https://www.f35.com/f35/about/5th-gen-capabilities.html",
+        "https://www.f35.com/f35/about/F-35-Partners.html",
+        "https://www.f35.com/f35/about/F35-Built-for-the-Future.html",
+        "https://www.f35.com/f35/about/Meet-The-Pilots.html",
+        "https://www.f35.com/f35/about/economic-impact.html",
+        "https://www.f35.com/f35/about/fast-facts.html",
+        "https://www.f35.com/f35/about/sustainment.html",
+        "https://www.f35.com/f35/global-enterprise.html",
+        "https://www.f35.com/f35/global-enterprise/australia.html",
+        "https://www.f35.com/f35/global-enterprise/romania.html",
+        "https://www.f35.com/f35/global-enterprise/singapore.html",
+        "https://www.f35.com/f35/global-enterprise/united-kingdom.html",
+        "https://www.f35.com/f35/global-enterprise/united-states.html",
+        "https://www.f35.com/f35/index.html",
+        "https://www.f35.com/f35/news-and-features.html",
+        "https://www.f35.com/f35/news-and-features/A-Thousand-F-35s-and-Counting.html",
+        "https://www.f35.com/f35/news-and-features/Allied-Deterrence-F-35s-Across-Europe-NATO.html",
+        "https://www.f35.com/f35/news-and-features/Bipartisan_group_of_Governors_Push_for_Strong_F-35_Production_Funding.html",
+        "https://www.f35.com/f35/news-and-features/Block-4-Capabilities-Sharpen-the-F-35s-Edge.html",
+        "https://www.f35.com/f35/news-and-features/F-35A-Procurement-Further-Offset-Projects-Are-Strengthening-Swiss-Industry-Target-Values-Clearly-Surpassed.html",
+        "https://www.f35.com/f35/news-and-features/F-35s-in-Australia-Allies-Advance-Airpower-in-the-Pacific.html",
+        "https://www.f35.com/f35/news-and-features/F35-Pilots-Dominate-the-Future-Battlespace.html",
+        "https://www.f35.com/f35/news-and-features/F35-in-the-Indo-Pacific.html",
+        "https://www.f35.com/f35/news-and-features/F35-users-talk-capabilities-deterrence-in-Europe.html",
+        "https://www.f35.com/f35/news-and-features/F35B-Touched-Down-Pacific-Coast-Highway.html",
+        "https://www.f35.com/f35/news-and-features/Flight-Path-to-3000-Shaping-the-Future-of-Air-Dominance.html",
+        "https://www.f35.com/f35/news-and-features/Future-Fighters-Pilots-Planes-and-AI.html",
+        "https://www.f35.com/f35/news-and-features/Germany-joins-F35-program.html",
+        "https://www.f35.com/f35/news-and-features/HIMARS-F35.html",
+        "https://www.f35.com/f35/news-and-features/Jacob-Had-an-Experience-He-Will-Never-Forget-at-Lockheed-Martin-in-Texas.html",
+        "https://www.f35.com/f35/news-and-features/Linked-In-F-35-Interoperability-in-Action0.html",
+        "https://www.f35.com/f35/news-and-features/Lockheed-Martin-Congratulates-the-Polish-Air-Force-on-First-F-35-Aircraft-Arrival-in-Country.html",
+        "https://www.f35.com/f35/news-and-features/Meteors-First-Flight-on-an-F35B.html",
+        "https://www.f35.com/f35/news-and-features/One-Million-F35-Flight-Hours-and-Counting.html",
+        "https://www.f35.com/f35/news-and-features/Red-Flag-24-2-Advancing-F35-interoperability-Nellis.html",
+        "https://www.f35.com/f35/news-and-features/Romania-Joins-F-35-Lightning-II-Program.html",
+        "https://www.f35.com/f35/news-and-features/The-ABCs-of-F-35.html",
+        "https://www.f35.com/f35/news-and-features/The-F-35-Advantage-Interoperability-and-Allied-Deterrence.html",
+        "https://www.f35.com/f35/news-and-features/The-F35-The-Quarterback-of-Piloted-and-Drone-Teaming.html",
+        "https://www.f35.com/f35/news-and-features/USAF-F35s-defend-NATO-what-it-learned.html",
+        "https://www.f35.com/f35/news-and-features/Watch-Inside-The-Worlds-Most-Advanced-Fighter-Jet.html",
+        "https://www.f35.com/f35/news-and-features/agile-allies--f-35s-at-ramstein-1v1.html",
+        "https://www.f35.com/f35/news-and-features/canada-announces-F35-procurement.html",
+        "https://www.f35.com/f35/news-and-features/delivering-digitally-for-f35-force-management-solution.html",
+        "https://www.f35.com/f35/news-and-features/f35-air-dominance-defined.html",
+        "https://www.f35.com/f35/news-and-features/f35-allied-deterrence-2023-highlights.html",
+        "https://www.f35.com/f35/news-and-features/f35-sensor-fusion-in-focus.html",
+        "https://www.f35.com/f35/news-and-features/f35-the-most-advanced-node-in-the-21st-century-warfare.html",
+        "https://www.f35.com/f35/news-and-features/f35-the-worlds-most-advanced-fighter.html",
+        "https://www.f35.com/f35/news-and-features/finland-selects-the-f35-lighting-ii-as-its-next-fighter.html",
+        "https://www.f35.com/f35/news-and-features/five-ways-f-35-training-is-improving-mission-readiness.html",
+        "https://www.f35.com/f35/news-and-features/how-the-f35-has-reshaped-strategic-balance-in-europe.html",
+        "https://www.f35.com/f35/news-and-features/japan-charts-course-to-f35-ops-at-sea.html",
+        "https://www.f35.com/f35/news-and-features/pentagon-and-lockheed-martin-agree-to-f-35-sustainment-contract.html",
+        "https://www.f35.com/f35/news-and-features/switzerland-selects-f35-for-future-air-defense-requirements.html",
+        "https://www.f35.com/f35/news-and-features/the-f35s-unrivaled-stealth.html"
+      ],
+      "description": "General content page: hero banner followed by mixed default content and blocks (columns, carousel, embeds). Covers homepage, About pages, the news landing page, and most news-and-features articles."
+    },
+    {
+      "name": "partner-country",
+      "representativePages": [
+        "https://www.f35.com/f35/global-enterprise/belgium.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/global-enterprise/belgium.html",
+        "https://www.f35.com/f35/global-enterprise/canada.html",
+        "https://www.f35.com/f35/global-enterprise/denmark.html",
+        "https://www.f35.com/f35/global-enterprise/finland.html",
+        "https://www.f35.com/f35/global-enterprise/greece.html",
+        "https://www.f35.com/f35/global-enterprise/israel.html",
+        "https://www.f35.com/f35/global-enterprise/japan.html",
+        "https://www.f35.com/f35/global-enterprise/poland.html",
+        "https://www.f35.com/f35/global-enterprise/republic-of-korea.html",
+        "https://www.f35.com/f35/global-enterprise/switzerland.html"
+      ],
+      "description": "Global Enterprise partner-country page: hero banner followed by a tabbed content section."
+    },
+    {
+      "name": "partner-country-variant",
+      "representativePages": [
+        "https://www.f35.com/f35/global-enterprise/czech-republic.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/global-enterprise/czech-republic.html",
+        "https://www.f35.com/f35/global-enterprise/germany.html",
+        "https://www.f35.com/f35/global-enterprise/italy.html",
+        "https://www.f35.com/f35/global-enterprise/netherlands.html",
+        "https://www.f35.com/f35/global-enterprise/norway.html"
+      ],
+      "description": "Global Enterprise partner-country page variant: hero banner with tabbed content, structurally similar to partner-country with minor block differences."
+    },
+    {
+      "name": "media-kit",
+      "representativePages": [
+        "https://www.f35.com/f35/mediakit.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/mediakit.html"
+      ],
+      "description": "Media kit page: video-forward layout centered on an embedded video block with supporting assets."
+    },
+    {
+      "name": "news-article-rich",
+      "representativePages": [
+        "https://www.f35.com/f35/news-and-features/First_Polish_F-35_Built_at_Cameris_FACO_has_Flown.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/news-and-features/First_Polish_F-35_Built_at_Cameris_FACO_has_Flown.html"
+      ],
+      "description": "News article with rich media: hero, embedded media, cards, columns and a related-content carousel."
+    },
+    {
+      "name": "news-article-columns",
+      "representativePages": [
+        "https://www.f35.com/f35/news-and-features/NATO-Allies-Expand-F-35-Integration-in-Northern-Europe-Through-Multinational-Weapons-Training-in-the-Netherlands.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/news-and-features/NATO-Allies-Expand-F-35-Integration-in-Northern-Europe-Through-Multinational-Weapons-Training-in-the-Netherlands.html"
+      ],
+      "description": "News article with a columns-heavy layout: hero framed by multiple column sections and a related cards block."
+    },
+    {
+      "name": "news-article-simple",
+      "representativePages": [
+        "https://www.f35.com/f35/news-and-features/Stealth-Fighters-Assemble-for-Multinational-Combat-Training-in-Australia.html"
+      ],
+      "urls": [
+        "https://www.f35.com/f35/news-and-features/Stealth-Fighters-Assemble-for-Multinational-Combat-Training-in-Australia.html"
+      ],
+      "description": "News article with a minimal layout: primarily default text content under a hero, few or no structured blocks."
+    }
+  ]
+}
