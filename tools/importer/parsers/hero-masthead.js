@@ -8,9 +8,26 @@
  * Generated: 2026-07-30
  */
 export default function parse(element, { document }) {
-  // Background image (optional). Source masthead often uses a CSS background,
-  // but capture an <img> if one is present anywhere in the block.
-  const bgImage = element.querySelector('img');
+  // Background image (optional). Source masthead often uses a CSS background
+  // set via an inline style="background-image:url(...)" rather than an <img>.
+  // Capture an <img> if present; otherwise mine the inline background-image URL
+  // from the block or any descendant and synthesize an <img> so the image is
+  // carried into the block content.
+  let bgImage = element.querySelector('img');
+  if (!bgImage) {
+    const styled = [element, ...element.querySelectorAll('[style]')]
+      .find((el) => /background-image\s*:\s*url\(/i.test(el.getAttribute('style') || ''));
+    if (styled) {
+      const m = (styled.getAttribute('style') || '')
+        .match(/background-image\s*:\s*url\(\s*['"]?([^'")]+)['"]?\s*\)/i);
+      if (m && m[1]) {
+        const img = document.createElement('img');
+        img.setAttribute('src', m[1].trim());
+        img.setAttribute('alt', '');
+        bgImage = img;
+      }
+    }
+  }
 
   // Title — source uses a styled div (.bannerTitle) rather than a real heading.
   const titleEl = element.querySelector('h1, h2, .bannerTitle, [class*="Title"], [class*="title"]');

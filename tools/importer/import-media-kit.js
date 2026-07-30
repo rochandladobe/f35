@@ -26,13 +26,15 @@ const PAGE_TEMPLATE = {
       {
         "name": "cards-resource",
         "instances": [
-          ".content-well [class*=\"col-lg-6\"]:has(.mediaCard)"
+          ".row:has(.mediaCard):not(:has(a[href*=\"vimeo.com/\"]))",
+          ".rteText .row:has(.mediaCard)"
         ]
       },
       {
         "name": "embed-video-broll",
         "instances": [
-          ".content-well .row:has(> [class*=\"col-lg-4\"] iframe[src*=\"vimeo\"])"
+          ".row:has(a[href*=\"vimeo.com/\"]):not(:has(.row))",
+          ".row:has(iframe[src*=\"vimeo\"]):not(:has(.row))"
         ]
       }
     ],

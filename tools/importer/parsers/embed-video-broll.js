@@ -9,9 +9,13 @@
  * Generated: 2026-07-30
  */
 export default function parse(element, { document }) {
-  // Each video lives in its own grid cell containing a Vimeo iframe.
+  // Each video lives in its own grid cell. Prefer cells that carry a Vimeo
+  // player iframe, but fall back to cells with a Vimeo download link — the
+  // player iframe is loaded from player.vimeo.com and is often stripped/blocked
+  // (HTTP 401 via Cloudflare) during headless import, whereas the plain
+  // download anchor (vimeo.com/<id>/<hash>) always survives.
   let videoCells = Array.from(element.querySelectorAll('[class*="col-lg-4"]'))
-    .filter((el) => el.querySelector('iframe[src*="vimeo"]'));
+    .filter((el) => el.querySelector('iframe[src*="vimeo"], a[href*="vimeo.com/"], .js-video'));
 
   // Fallback: derive from iframes directly.
   if (videoCells.length === 0) {
@@ -30,10 +34,21 @@ export default function parse(element, { document }) {
 
   videoCells.forEach((cell) => {
     const iframe = cell.querySelector('iframe[src*="vimeo"], iframe');
-    const src = iframe ? iframe.getAttribute('src') : null;
+    let src = iframe ? iframe.getAttribute('src') : null;
 
     // Optional download link (e.g. "Download F-35A B-Roll").
     const downloadLink = cell.querySelector('.cnt_paragraph a[href], a[href*="vimeo.com/"]');
+
+    // Reconstruct the player URL from the download link if the iframe is gone.
+    // Download links look like https://vimeo.com/675656481/7ce4eddbfa →
+    // player URL is https://player.vimeo.com/video/675656481.
+    if (!src && downloadLink) {
+      const dlHref = downloadLink.getAttribute('href') || '';
+      const idMatch = dlHref.match(/vimeo\.com\/(\d+)/);
+      if (idMatch) {
+        src = `https://player.vimeo.com/video/${idMatch[1]}`;
+      }
+    }
 
     const contentCell = [];
 
