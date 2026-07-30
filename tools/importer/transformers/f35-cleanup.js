@@ -49,6 +49,28 @@ export default function transform(hookName, element, payload) {
       '.selectLanguage',
       'select.form-control',
     ]);
+
+    // Screen-reader-only page title (e.g. <h1 class="sr-only sr-only-focusable">
+    // F-35 Lightning II</h1>). It's visually hidden on the source via the sr-only
+    // utility but has no such class in EDS, so it would render as a stray visible
+    // heading at the top of the page. Remove it — the document title is preserved
+    // in page metadata.
+    WebImporter.DOMUtils.remove(element, [
+      '.sr-only',
+      '.sr-only-focusable',
+      '.visually-hidden',
+    ]);
+
+    // Non-authorable analytics/tracking pixels emitted as bare anchors/images
+    // (e.g. <a href="about:blank">_hjSafeContext</a>, LinkedIn/Twitter/Facebook
+    // tracking-pixel <img> beacons). These carry no content value.
+    WebImporter.DOMUtils.remove(element, [
+      'a[href="about:blank"]',
+      'img[src*="px.ads.linkedin.com"]',
+      'img[src*="facebook.com/tr"]',
+      'img[src*="analytics.twitter.com"]',
+      'img[src*="t.co/i/adsct"]',
+    ]);
   }
 
   if (hookName === TransformHook.afterTransform) {
