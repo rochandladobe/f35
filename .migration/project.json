@@ -1,0 +1,10 @@
+{
+  "type": "doc",
+  "sites": {
+    "f35": {
+      "previewOrg": "rochandladobe",
+      "previewSite": "f35",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

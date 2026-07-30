@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-promo",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/",
+    "originPage": "F-35 homepage (content-page template)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "minimal",
+    "purpose": "promo-band",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image | heading + paragraph + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "two-column promo bands (image beside title/text/CTA)",
+      "About and Fast Facts style promo teasers",
+      "side-by-side feature callouts"
+    ],
+    "notSuitableFor": [
+      "three-or-more column comparison grids",
+      "repeating card grids (use cards)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-30T00:00:00.000Z"
+  }
+}

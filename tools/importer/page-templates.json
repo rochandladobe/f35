@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "projectType": "doc"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.f35.com/",
+        "https://www.f35.com/f35/index.html"
+      ],
+      "representativeUrl": "https://www.f35.com/",
+      "coverageGaps": [],
+      "description": "F-35 homepage: full-bleed masthead hero, blue/gradient promo bands (About, Fast Facts) as two-column image+text blocks, a news teaser card row, and a social-media carousel.",
+      "blocks": [
+        {
+          "name": "hero-masthead",
+          "instances": [
+            "div.bg-white > div:nth-child(1)"
+          ]
+        },
+        {
+          "name": "columns-promo",
+          "instances": [
+            "#homeSectionTwo",
+            ".bg-grad:not(#homeSectionTwo)"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "#homeSectionThree"
+          ]
+        },
+        {
+          "name": "carousel-social",
+          "instances": [
+            "#homeSectionFive"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "masthead-hero",
+          "name": "masthead-hero",
+          "selector": "div.bg-white > div:nth-child(1)",
+          "style": null,
+          "blocks": [
+            "hero-masthead"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "about-f35",
+          "name": "about-f35",
+          "selector": "#homeSectionTwo",
+          "style": null,
+          "blocks": [
+            "columns-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "news-and-features",
+          "name": "news-and-features",
+          "selector": "#homeSectionThree",
+          "style": null,
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": [
+            "#homeSectionThree"
+          ]
+        },
+        {
+          "id": "fast-facts",
+          "name": "fast-facts",
+          "selector": ".bg-grad:not(#homeSectionTwo)",
+          "style": null,
+          "blocks": [
+            "columns-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "follow-us-social",
+          "name": "follow-us-social",
+          "selector": "#homeSectionFive",
+          "style": null,
+          "blocks": [
+            "carousel-social"
+          ],
+          "defaultContent": [
+            "#homeSectionFive"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content-page",
+      "urls": [
+        "https://www.f35.com/f35/about.html",
+        "https://www.f35.com/f35/about/5th-gen-capabilities.html",
+        "https://www.f35.com/f35/about/F-35-Partners.html",
+        "https://www.f35.com/f35/about/F35-Built-for-the-Future.html",
+        "https://www.f35.com/f35/about/Meet-The-Pilots.html",
+        "https://www.f35.com/f35/about/economic-impact.html",
+        "https://www.f35.com/f35/about/fast-facts.html",
+        "https://www.f35.com/f35/about/sustainment.html",
+        "https://www.f35.com/f35/global-enterprise.html",
+        "https://www.f35.com/f35/global-enterprise/australia.html",
+        "https://www.f35.com/f35/global-enterprise/romania.html",
+        "https://www.f35.com/f35/global-enterprise/singapore.html",
+        "https://www.f35.com/f35/global-enterprise/united-kingdom.html",
+        "https://www.f35.com/f35/global-enterprise/united-states.html",
+        "https://www.f35.com/f35/news-and-features.html"
+      ],
+      "representativeUrl": "https://www.f35.com/f35/about.html",
+      "coverageGaps": [],
+      "description": "General F-35 content page (About, Global Enterprise overview, news landing): a full-bleed masthead hero (banner image + overlaid title) followed by a content-well body of prose, headings, and inline images/media as default content.",
+      "blocks": [
+        {
+          "name": "hero-masthead",
+          "instances": [
+            "div.masthead"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "masthead-hero",
+          "name": "masthead-hero",
+          "selector": "div.masthead",
+          "style": null,
+          "blocks": [
+            "hero-masthead"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "content-body",
+          "name": "content-body",
+          "selector": "div.content-well",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.content-well"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "partner-country",
+      "urls": [
+        "https://www.f35.com/f35/global-enterprise/belgium.html",
+        "https://www.f35.com/f35/global-enterprise/canada.html",
+        "https://www.f35.com/f35/global-enterprise/denmark.html",
+        "https://www.f35.com/f35/global-enterprise/finland.html",
+        "https://www.f35.com/f35/global-enterprise/greece.html",
+        "https://www.f35.com/f35/global-enterprise/israel.html",
+        "https://www.f35.com/f35/global-enterprise/japan.html",
+        "https://www.f35.com/f35/global-enterprise/poland.html",
+        "https://www.f35.com/f35/global-enterprise/republic-of-korea.html",
+        "https://www.f35.com/f35/global-enterprise/switzerland.html"
+      ],
+      "representativeUrl": "https://www.f35.com/f35/global-enterprise/belgium.html",
+      "coverageGaps": [],
+      "description": "Global Enterprise partner-country page: hero banner followed by a tabbed content section.",
+      "blocks": [
+        {
+          "name": "hero-masthead",
+          "instances": [
+            "div.masthead"
+          ]
+        },
+        {
+          "name": "cards-specs",
+          "instances": [
+            "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))"
+          ]
+        },
+        {
+          "name": "cards-milestone",
+          "instances": [
+            "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "masthead-hero",
+          "name": "masthead-hero",
+          "selector": "div.masthead",
+          "style": null,
+          "blocks": [
+            "hero-masthead"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "country-body",
+          "name": "country-body",
+          "selector": [
+            "#English .content-well",
+            ".content-well"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-specs",
+            "cards-milestone"
+          ],
+          "defaultContent": [
+            "#English .content-well",
+            ".content-well"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "partner-country-variant",
+      "urls": [
+        "https://www.f35.com/f35/global-enterprise/czech-republic.html",
+        "https://www.f35.com/f35/global-enterprise/germany.html",
+        "https://www.f35.com/f35/global-enterprise/italy.html",
+        "https://www.f35.com/f35/global-enterprise/netherlands.html",
+        "https://www.f35.com/f35/global-enterprise/norway.html"
+      ],
+      "representativeUrl": "https://www.f35.com/f35/global-enterprise/czech-republic.html",
+      "coverageGaps": [],
+      "description": "Global Enterprise partner-country page variant: hero banner with tabbed content, structurally similar to partner-country with minor block differences.",
+      "blocks": [
+        {
+          "name": "hero-masthead",
+          "instances": [
+            "div.masthead"
+          ]
+        },
+        {
+          "name": "cards-specs",
+          "instances": [
+            "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))"
+          ]
+        },
+        {
+          "name": "cards-milestone",
+          "instances": [
+            "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "masthead-hero",
+          "name": "masthead-hero",
+          "selector": "div.masthead",
+          "style": null,
+          "blocks": [
+            "hero-masthead"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "country-body",
+          "name": "country-body",
+          "selector": [
+            "#English .content-well",
+            ".content-well"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-specs",
+            "cards-milestone"
+          ],
+          "defaultContent": [
+            "#English .content-well",
+            ".content-well"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "media-kit",
+      "urls": [
+        "https://www.f35.com/f35/mediakit.html"
+      ],
+      "representativeUrl": "https://www.f35.com/f35/mediakit.html",
+      "coverageGaps": [],
+      "description": "Media kit page: video-forward layout centered on an embedded video block with supporting assets.",
+      "blocks": [
+        {
+          "name": "cards-resource",
+          "instances": [
+            ".content-well [class*=\"col-lg-6\"]:has(.mediaCard)"
+          ]
+        },
+        {
+          "name": "embed-video-broll",
+          "instances": [
+            ".content-well .row:has(> [class*=\"col-lg-4\"] iframe[src*=\"vimeo\"])"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "media-kit-body",
+          "name": "media-kit-body",
+          "selector": "div.content-well",
+          "style": null,
+          "blocks": [
+            "cards-resource",
+            "embed-video-broll"
+          ],
+          "defaultContent": [
+            "div.content-well"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "news-article",
+      "urls": [
+        "https://www.f35.com/f35/news-and-features/A-Thousand-F-35s-and-Counting.html",
+        "https://www.f35.com/f35/news-and-features/Allied-Deterrence-F-35s-Across-Europe-NATO.html",
+        "https://www.f35.com/f35/news-and-features/Bipartisan_group_of_Governors_Push_for_Strong_F-35_Production_Funding.html",
+        "https://www.f35.com/f35/news-and-features/Block-4-Capabilities-Sharpen-the-F-35s-Edge.html",
+        "https://www.f35.com/f35/news-and-features/F-35A-Procurement-Further-Offset-Projects-Are-Strengthening-Swiss-Industry-Target-Values-Clearly-Surpassed.html",
+        "https://www.f35.com/f35/news-and-features/F-35s-in-Australia-Allies-Advance-Airpower-in-the-Pacific.html",
+        "https://www.f35.com/f35/news-and-features/F35-Pilots-Dominate-the-Future-Battlespace.html",
+        "https://www.f35.com/f35/news-and-features/F35-in-the-Indo-Pacific.html",
+        "https://www.f35.com/f35/news-and-features/F35-users-talk-capabilities-deterrence-in-Europe.html",
+        "https://www.f35.com/f35/news-and-features/F35B-Touched-Down-Pacific-Coast-Highway.html",
+        "https://www.f35.com/f35/news-and-features/First_Polish_F-35_Built_at_Cameris_FACO_has_Flown.html",
+        "https://www.f35.com/f35/news-and-features/Flight-Path-to-3000-Shaping-the-Future-of-Air-Dominance.html",
+        "https://www.f35.com/f35/news-and-features/Future-Fighters-Pilots-Planes-and-AI.html",
+        "https://www.f35.com/f35/news-and-features/Germany-joins-F35-program.html",
+        "https://www.f35.com/f35/news-and-features/HIMARS-F35.html",
+        "https://www.f35.com/f35/news-and-features/Jacob-Had-an-Experience-He-Will-Never-Forget-at-Lockheed-Martin-in-Texas.html",
+        "https://www.f35.com/f35/news-and-features/Linked-In-F-35-Interoperability-in-Action0.html",
+        "https://www.f35.com/f35/news-and-features/Lockheed-Martin-Congratulates-the-Polish-Air-Force-on-First-F-35-Aircraft-Arrival-in-Country.html",
+        "https://www.f35.com/f35/news-and-features/Meteors-First-Flight-on-an-F35B.html",
+        "https://www.f35.com/f35/news-and-features/NATO-Allies-Expand-F-35-Integration-in-Northern-Europe-Through-Multinational-Weapons-Training-in-the-Netherlands.html",
+        "https://www.f35.com/f35/news-and-features/One-Million-F35-Flight-Hours-and-Counting.html",
+        "https://www.f35.com/f35/news-and-features/Red-Flag-24-2-Advancing-F35-interoperability-Nellis.html",
+        "https://www.f35.com/f35/news-and-features/Romania-Joins-F-35-Lightning-II-Program.html",
+        "https://www.f35.com/f35/news-and-features/Stealth-Fighters-Assemble-for-Multinational-Combat-Training-in-Australia.html",
+        "https://www.f35.com/f35/news-and-features/The-ABCs-of-F-35.html",
+        "https://www.f35.com/f35/news-and-features/The-F-35-Advantage-Interoperability-and-Allied-Deterrence.html",
+        "https://www.f35.com/f35/news-and-features/The-F35-The-Quarterback-of-Piloted-and-Drone-Teaming.html",
+        "https://www.f35.com/f35/news-and-features/USAF-F35s-defend-NATO-what-it-learned.html",
+        "https://www.f35.com/f35/news-and-features/Watch-Inside-The-Worlds-Most-Advanced-Fighter-Jet.html",
+        "https://www.f35.com/f35/news-and-features/agile-allies--f-35s-at-ramstein-1v1.html",
+        "https://www.f35.com/f35/news-and-features/canada-announces-F35-procurement.html",
+        "https://www.f35.com/f35/news-and-features/delivering-digitally-for-f35-force-management-solution.html",
+        "https://www.f35.com/f35/news-and-features/f35-air-dominance-defined.html",
+        "https://www.f35.com/f35/news-and-features/f35-allied-deterrence-2023-highlights.html",
+        "https://www.f35.com/f35/news-and-features/f35-sensor-fusion-in-focus.html",
+        "https://www.f35.com/f35/news-and-features/f35-the-most-advanced-node-in-the-21st-century-warfare.html",
+        "https://www.f35.com/f35/news-and-features/f35-the-worlds-most-advanced-fighter.html",
+        "https://www.f35.com/f35/news-and-features/finland-selects-the-f35-lighting-ii-as-its-next-fighter.html",
+        "https://www.f35.com/f35/news-and-features/five-ways-f-35-training-is-improving-mission-readiness.html",
+        "https://www.f35.com/f35/news-and-features/how-the-f35-has-reshaped-strategic-balance-in-europe.html",
+        "https://www.f35.com/f35/news-and-features/japan-charts-course-to-f35-ops-at-sea.html",
+        "https://www.f35.com/f35/news-and-features/pentagon-and-lockheed-martin-agree-to-f-35-sustainment-contract.html",
+        "https://www.f35.com/f35/news-and-features/switzerland-selects-f35-for-future-air-defense-requirements.html",
+        "https://www.f35.com/f35/news-and-features/the-f35s-unrivaled-stealth.html"
+      ],
+      "representativeUrl": "https://www.f35.com/f35/news-and-features/A-Thousand-F-35s-and-Counting.html",
+      "coverageGaps": [],
+      "description": "F-35 news & features article: a full-bleed masthead hero (banner image with overlaid article title, date and tag list) followed by article body prose (highlighted deck, paragraphs, inline captioned images) as default content.",
+      "blocks": [
+        {
+          "name": "hero-masthead",
+          "instances": [
+            "div.masthead"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "masthead-hero",
+          "name": "masthead-hero",
+          "selector": "div.masthead",
+          "style": null,
+          "blocks": [
+            "hero-masthead"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "article-body",
+          "name": "article-body",
+          "selector": "div.content-well",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.content-well"
+          ]
+        }
+      ]
+    }
+  ]
+}

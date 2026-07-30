@@ -1,0 +1,71 @@
+/* cards-milestone — "Program Milestones" grid
+   Values extracted from f35.com Belgium page computed styles.
+   Source: borderless 3-up grid, natural-aspect image above a flowing
+   paragraph where the year is bold and inline with the description. */
+
+.cards-milestone > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 30px; /* 30px column gutter matches source .row/.col padding */
+}
+
+.cards-milestone > ul > li {
+  background-color: var(--background-color);
+}
+
+/* Image: fills the column, keeps its natural aspect ratio, no crop, no radius */
+.cards-milestone .cards-milestone-card-image {
+  line-height: 0;
+}
+
+.cards-milestone .cards-milestone-card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: fill;
+}
+
+/* Text block: 20px below the image, left aligned, body-sized copy */
+.cards-milestone .cards-milestone-card-body {
+  margin: 20px 0 0;
+  text-align: left;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.2;
+}
+
+/* Year: small bold body text that flows inline with the description,
+   overriding the global condensed/navy/uppercase heading styling. */
+.cards-milestone .cards-milestone-card-body h3 {
+  display: inline;
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.cards-milestone .cards-milestone-card-body h3::after {
+  content: ": ";
+}
+
+.cards-milestone .cards-milestone-card-body p {
+  display: inline;
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@media (width >= 900px) {
+  .cards-milestone > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

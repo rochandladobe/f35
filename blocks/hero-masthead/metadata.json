@@ -1,0 +1,43 @@
+{
+  "variantName": "hero-masthead",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/",
+    "originPage": "F-35 homepage (content-page template)",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "masthead-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + paragraph + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage masthead banners",
+      "content-page top hero banners",
+      "full-bleed photo banners with overlaid heading/text and a single CTA"
+    ],
+    "notSuitableFor": [
+      "text-only intros without a background image",
+      "multi-column split heroes"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index",
+      "/f35/global-enterprise/belgium",
+      "/f35/global-enterprise/czech-republic",
+      "/f35/news-and-features/a-thousand-f-35s-and-counting"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-07-30T18:34:00.000000+00:00"
+  }
+}

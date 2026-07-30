@@ -1,0 +1,28 @@
+/*
+ * brand.css — f35.com design tokens extracted from https://www.f35.com/f35/
+ * Headings use a condensed grotesque (DIN Condensed family on source: "dinConReg");
+ * body uses Calibri / Arial Narrow. Brand color is navy #003478.
+ */
+
+:root {
+  /* colors */
+  --background-color: #fff;
+  --light-color: #f7f7f7;
+  --dark-color: #003478; /* F-35 brand navy */
+  --text-color: #212529;
+  --link-color: #003478;
+  --link-hover-color: #00214d;
+
+  /* brand accents */
+  --brand-navy: #003478;
+  --brand-navy-dark: #00214d;
+  --brand-blue: #2881e1;
+  --brand-yellow: #ffc72c;
+
+  /* fonts */
+  --body-font-family: calibri, "Arial Narrow", arial, sans-serif;
+  --heading-font-family: oswald, "DIN Condensed", "Arial Narrow", arial, sans-serif;
+
+  /* nav height */
+  --nav-height: 64px;
+}

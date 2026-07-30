@@ -1,0 +1,96 @@
+/* Block: cards-resource — resource/download card grid.
+   Values extracted from computed styles on https://www.f35.com/f35/mediakit.html
+   Source cards: 295px wide, white bg, box-shadow 0 2px 3px 1px rgba(0,0,0,.28),
+   navy icon banner (100px), navy title (calibri ~20.5px), right-aligned "Download»". */
+
+.cards-resource > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-resource > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 3px 1px rgb(0 0 0 / 28%);
+}
+
+/* icon/banner cell — navy block. On import the glyph icon is absent, so this
+   renders as a solid navy band (matches source when no image is present). */
+.cards-resource .cards-resource-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  background-color: var(--brand-navy);
+  line-height: 0;
+}
+
+.cards-resource .cards-resource-card-image picture,
+.cards-resource .cards-resource-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* card body — holds title + download CTA */
+.cards-resource .cards-resource-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* title */
+.cards-resource .cards-resource-card-body h3 {
+  margin: 20px;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* download CTA row — pinned to the bottom, right aligned */
+.cards-resource .cards-resource-card-body p {
+  margin: 0;
+  margin-top: auto;
+  padding: 0 20px 20px;
+  text-align: right;
+}
+
+.cards-resource .cards-resource-card-body p a:any-link {
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.cards-resource .cards-resource-card-body p a:hover {
+  text-decoration: underline;
+}
+
+/* chevron affordance matching source "Download»" / "Access Photos»" */
+.cards-resource .cards-resource-card-body p a:any-link::after {
+  content: "\00bb";
+  margin-left: 0.15em;
+}
+
+@media (width >= 600px) {
+  .cards-resource > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-resource > ul {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}

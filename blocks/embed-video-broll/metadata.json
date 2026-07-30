@@ -1,0 +1,39 @@
+{
+  "variantName": "embed-video-broll",
+  "baseBlock": "embed",
+  "version": "1.0.0",
+  "created": "2026-07-30T18:12:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/f35/mediakit.html",
+    "originPage": "Media Kit page - F-35 Variant B-Roll section",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "video-embed",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "external video URL (Vimeo/YouTube) rendered as a responsive 16:9 embed, authored in a 3-up grid with a download link per item",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "embedded Vimeo/YouTube videos on media kit and news pages",
+      "B-Roll / video download galleries where each cell is a video embed plus a download link",
+      "single or multi-up responsive video embeds"
+    ],
+    "notSuitableFor": [
+      "image carousels (use carousel)",
+      "social post walls with custom styling (use carousel-social)",
+      "inline text with a single hero video treatment"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/f35/mediakit"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-30T18:12:00.000Z"
+  }
+}

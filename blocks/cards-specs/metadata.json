@@ -1,0 +1,41 @@
+{
+  "variantName": "cards-specs",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-30T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.f35.com/f35/global-enterprise/belgium.html",
+    "originPage": "F-35 partner-country page (Belgium)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "spec-stat-band",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "3-up borderless icon/stat tiles (image-only; labels may be baked into icon images)",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "3-across spec / stat icon bands (e.g. Aircraft Variant / Program of Record / Industry partnerships)",
+      "centered borderless icon rows on partner-country and about pages",
+      "at-a-glance program fact tiles"
+    ],
+    "notSuitableFor": [
+      "bordered news/article teaser grids with dates and read-more links (use cards-news)",
+      "milestone item grids with year label + description (use cards-milestone)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/f35/global-enterprise/belgium",
+      "/f35/global-enterprise/czech-republic"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-30T18:10:05.303705+00:00"
+  }
+}

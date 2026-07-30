@@ -1,0 +1,37 @@
+/* cards-specs — borderless icon/stat tiles (labels baked into the images).
+   Source: f35.com Bootstrap .row > .col-lg-4 (3-up, 30px gutters, ~200px square icons). */
+
+.cards-specs > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 30px;
+}
+
+.cards-specs > ul > li {
+  text-align: center;
+}
+
+.cards-specs .cards-specs-card-image {
+  line-height: 0;
+}
+
+/* borderless, transparent square icons — sized to match the source (~199px) */
+.cards-specs .cards-specs-card-image picture,
+.cards-specs .cards-specs-card-image img {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+@media (width >= 900px) {
+  .cards-specs > ul {
+    grid-template-columns: repeat(3, 1fr);
+    place-items: start center;
+  }
+}
