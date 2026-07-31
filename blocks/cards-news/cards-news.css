@@ -81,9 +81,10 @@
   white-space: nowrap;
 }
 
-/* Full-bleed navy "top wing" band behind the news cards — reproduces the source
-   bgWingTop.png (navy shape with a slanted left edge and a stepped top notch),
-   stretched full-viewport-width so the cards sit on the diagonal navy band. */
+/* Full-bleed navy "top wing" band behind the news cards. The source draws
+   bgWingTop.png (navy shape with a slanted left edge, full-width on the right)
+   at its native aspect ratio (background-size: 100% auto), top-anchored — this
+   keeps the signature diagonal instead of flattening it into a solid block. */
 .cards-news {
   position: relative;
 }
@@ -98,8 +99,8 @@
   width: 100vw;
   background-image: url("/styles/bg-wing-top.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+  background-position: left top;
+  background-size: 100% auto;
 }
 
 .cards-news > ul {

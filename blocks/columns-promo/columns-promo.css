@@ -86,14 +86,18 @@
 }
 
 @media (width >= 900px) {
+  /* short grey band; the pilot cutout is taller and overhangs the top edge.
+     A top margin separates the band from the hero above (matches source). */
   .columns-promo {
-    padding: 16px 15px 0;
+    margin-top: 40px;
+    padding: 0 15px;
   }
 
   .columns-promo > div {
     flex-direction: row;
     align-items: flex-end;
     gap: 24px;
+    min-height: 210px;
   }
 
   .columns-promo > div > div {
@@ -101,16 +105,19 @@
     order: unset;
   }
 
-  /* image column narrower; cutout sits flush to the band bottom */
+  /* image column narrower; the cutout is bottom-aligned and taller than the
+     band so its head pokes above the top edge (source: 266px img vs 213px band). */
   .columns-promo > div > .columns-promo-img-col {
     flex: 0 0 40%;
     align-self: flex-end;
+    overflow: visible;
   }
 
   .columns-promo .columns-promo-img-col img {
     width: auto;
     max-width: 100%;
     max-height: 320px;
+    margin-top: -60px;
   }
 
   /* text column vertically centered against the band */
