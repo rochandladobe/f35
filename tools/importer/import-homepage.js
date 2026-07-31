@@ -194,7 +194,7 @@ export default {
     // backgrounds (bgWingTop/bgWingBottom, Fast Facts icon) into real <img> tags
     // that render as empty spacer bands. Strip them now — after conversion, before
     // URL adjustment — leaving surrounding content intact.
-    main.querySelectorAll('img[src*="bgWing"], img[src*="homeFastFacts"], img[src*="TopClear"]')
+    main.querySelectorAll('img[src*="bgWing"], img[src*="homeFastFactsIcon"], img[src*="TopClear"]')
       .forEach((img) => {
         const wrap = img.closest('picture') || img;
         const para = wrap.parentElement;
@@ -204,16 +204,25 @@ export default {
         }
       });
     // Hotjar safe-context anchor (<a href="about:blank">_hjSafeContext</a>) is
-    // injected by third-party JS very late — strip it here (last chance) so it
-    // doesn't leave a stray empty link at the bottom of the content.
-    main.querySelectorAll('a[href="about:blank"]').forEach((a) => {
-      const para = a.closest('p');
-      a.remove();
-      if (para && !para.textContent.trim() && !para.querySelector('img, picture, iframe')) {
-        para.remove();
-      }
-    });
+    // injected by third-party JS — strip by href OR its distinctive text/id so
+    // it doesn't leave a stray empty link. (href may be rewritten to /blank by
+    // adjustImageUrls, so also match text and run again after that rule below.)
+    const removeHjSafe = () => {
+      main.querySelectorAll('a').forEach((a) => {
+        const href = a.getAttribute('href') || '';
+        const txt = (a.textContent || '').trim();
+        if (href === 'about:blank' || href === '/blank' || txt === '_hjSafeContext') {
+          const para = a.closest('p');
+          a.remove();
+          if (para && !para.textContent.trim() && !para.querySelector('img, picture, iframe')) {
+            para.remove();
+          }
+        }
+      });
+    };
+    removeHjSafe();
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
+    removeHjSafe();
 
     // 6. Sanitized path
     const p = WebImporter.FileUtils.sanitizePath(

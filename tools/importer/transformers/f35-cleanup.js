@@ -56,6 +56,32 @@ export default function transform(hookName, element, payload) {
       newsFiller.replaceWith(p);
     }
 
+    // Homepage "Fast Facts" promo band (.bg-grad, not #homeSectionTwo) is a
+    // columns-promo with a styled .sectionTitle <div> ("Fast Facts") and a
+    // supporting <div> ("Program Status and Recent Milestones at a Glance").
+    // Promote them to <h2>/<p> so the columns-promo parser captures a proper
+    // heading + paragraph alongside the carrier photo and Learn More CTA.
+    const fastFactsBand = [...element.querySelectorAll('.bg-grad')]
+      .find((el) => el.id !== 'homeSectionTwo' && /Fast Facts/i.test(el.textContent || ''));
+    if (fastFactsBand) {
+      const ffTitle = fastFactsBand.querySelector('.sectionTitle');
+      if (ffTitle) {
+        const h = element.ownerDocument.createElement('h2');
+        h.textContent = ffTitle.textContent.trim();
+        ffTitle.replaceWith(h);
+      }
+      // The support line is the sibling div right after the (now) heading.
+      const heading = fastFactsBand.querySelector('h2');
+      if (heading && heading.nextElementSibling
+        && heading.nextElementSibling.tagName === 'DIV'
+        && heading.nextElementSibling.children.length === 0
+        && heading.nextElementSibling.textContent.trim()) {
+        const p = element.ownerDocument.createElement('p');
+        p.textContent = heading.nextElementSibling.textContent.trim();
+        heading.nextElementSibling.replaceWith(p);
+      }
+    }
+
     // Decorative background "wing" graphics (bgWingTop/bgWingBottom) and the
     // Fast Facts silhouette icon are pure CSS decoration on the source — applied
     // as inline `background-image` (or lazy data-src), NOT authored <img>. Left
