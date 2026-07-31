@@ -296,6 +296,12 @@ main img {
 /* sections */
 main > .section {
   margin: 40px 0;
+
+  /* Full-bleed diagonal navy bands (cards-news / carousel-social) use
+     width:100vw with negative margins to escape the 1200px section box. Clip
+     horizontal overflow here so 100vw (which includes the scrollbar width)
+     never introduces a horizontal scrollbar. */
+  overflow-x: clip;
 }
 
 main > .section > div {

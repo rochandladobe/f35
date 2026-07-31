@@ -1,6 +1,27 @@
 /* cards-news — F-35 "News & Features" teaser cards.
    Values extracted from https://www.f35.com/f35/index.html (#homeSectionThree). */
 
+/* Full-bleed navy "top wing" band behind the news cards — reproduces the source
+   bgWingTop.png (navy shape with a slanted left edge and a stepped top notch),
+   stretched full-viewport-width so the cards sit on the diagonal navy band. */
+.cards-news {
+  position: relative;
+}
+
+.cards-news::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -48px;
+  bottom: -48px;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  background-image: url("/styles/bg-wing-top.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
 .cards-news > ul {
   list-style: none;
   margin: 0;

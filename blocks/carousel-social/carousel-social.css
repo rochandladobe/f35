@@ -3,12 +3,32 @@
    navy band, white cards (~300px) with preview image + centered navy title,
    brand-blue rectangular arrows and circular dot pagination. */
 
+/* Full-bleed navy "bottom wing" band. The source uses bgWingBottom.png — a navy
+   shape with a slanted left edge and a stepped notch. We reproduce it exactly by
+   stretching that PNG full-viewport-width behind the carousel (kept as a project
+   asset in /styles), so the signature diagonal matches the source at any width. */
 .carousel-social {
-  background-color: var(--brand-navy);
-  background-image: url("https://www.f35.com/content/dam/lockheed-martin/aero/f35/images/bgWingBottom.png");
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 72px max(16px, calc(50vw - 600px)) 104px;
+  background-color: transparent;
+}
+
+.carousel-social::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/styles/bg-wing-bottom.png");
   background-repeat: no-repeat;
-  background-position: 0 100%;
-  padding: 40px 16px 32px;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.carousel-social > * {
+  position: relative;
+  z-index: 1;
 }
 
 .carousel-social .carousel-social-slides-container {
