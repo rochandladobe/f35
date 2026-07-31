@@ -4,15 +4,14 @@ import { getMetadata } from '../../scripts/aem.js';
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
 /**
- * Fetches the nav fragment markup. Tries the canonical content path first,
- * then falls back to the nav metadata path.
+ * Fetches the nav fragment markup. Tries the nav metadata path (the published
+ * fragment location) first, then falls back to the canonical content path.
  * @returns {Promise<{ html: string, base: string }|null>} markup and its base path
  */
 async function fetchNavFragment() {
-  const candidates = ['/content/nav.plain.html'];
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  candidates.push(`${navPath}.plain.html`);
+  const candidates = [`${navPath}.plain.html`, '/content/nav.plain.html'];
 
   for (let i = 0; i < candidates.length; i += 1) {
     const url = candidates[i];

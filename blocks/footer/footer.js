@@ -1,15 +1,14 @@
 import { getMetadata } from '../../scripts/aem.js';
 
 /**
- * Fetches the footer fragment markup. Tries the canonical content path first,
- * then falls back to the footer metadata path.
+ * Fetches the footer fragment markup. Tries the footer metadata path (the
+ * published fragment location) first, then falls back to the canonical content path.
  * @returns {Promise<{ html: string, base: string }|null>} markup and its base path
  */
 async function fetchFooterFragment() {
-  const candidates = ['/content/footer.plain.html'];
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  candidates.push(`${footerPath}.plain.html`);
+  const candidates = [`${footerPath}.plain.html`, '/content/footer.plain.html'];
 
   for (let i = 0; i < candidates.length; i += 1) {
     const url = candidates[i];
