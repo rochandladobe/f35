@@ -341,3 +341,9 @@ main .section.dark h6 {
 main .section.dark a:any-link {
   color: #fff;
 }
+
+/* Hide the third-party Hotjar "_hjSafeContext" anchor (href="about:blank") that
+   gets injected into scraped content during import — it has no content value. */
+main a[href="about:blank"] {
+  display: none;
+}
