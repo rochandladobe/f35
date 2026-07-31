@@ -29,7 +29,7 @@
         {
           "name": "cards-news",
           "instances": [
-            "#homeSectionThree"
+            "#homeSectionThree .d-flex.flex-md-row:has(.homeNewsCard)"
           ]
         },
         {

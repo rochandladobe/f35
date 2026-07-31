@@ -38,13 +38,13 @@ const PAGE_TEMPLATE = {
         "name": "columns-promo",
         "instances": [
           "#homeSectionTwo",
-          "div.bg-white > div:nth-child(6)"
+          ".bg-grad:not(#homeSectionTwo)"
         ]
       },
       {
         "name": "cards-news",
         "instances": [
-          "#homeSectionThree"
+          "#homeSectionThree .d-flex.flex-md-row:has(.homeNewsCard)"
         ]
       },
       {
@@ -90,7 +90,7 @@ const PAGE_TEMPLATE = {
       {
         "id": "fast-facts",
         "name": "fast-facts",
-        "selector": "div.bg-white > div:nth-child(6)",
+        "selector": ".bg-grad:not(#homeSectionTwo)",
         "style": null,
         "blocks": [
           "columns-promo"
@@ -190,6 +190,29 @@ export default {
     main.appendChild(hr);
     WebImporter.rules.createMetadata(main, document);
     WebImporter.rules.transformBackgroundImages(main, document);
+    // transformBackgroundImages materializes decorative CSS wing/silhouette
+    // backgrounds (bgWingTop/bgWingBottom, Fast Facts icon) into real <img> tags
+    // that render as empty spacer bands. Strip them now — after conversion, before
+    // URL adjustment — leaving surrounding content intact.
+    main.querySelectorAll('img[src*="bgWing"], img[src*="homeFastFacts"], img[src*="TopClear"]')
+      .forEach((img) => {
+        const wrap = img.closest('picture') || img;
+        const para = wrap.parentElement;
+        wrap.remove();
+        if (para && para.tagName === 'P' && !para.textContent.trim() && !para.querySelector('img')) {
+          para.remove();
+        }
+      });
+    // Hotjar safe-context anchor (<a href="about:blank">_hjSafeContext</a>) is
+    // injected by third-party JS very late — strip it here (last chance) so it
+    // doesn't leave a stray empty link at the bottom of the content.
+    main.querySelectorAll('a[href="about:blank"]').forEach((a) => {
+      const para = a.closest('p');
+      a.remove();
+      if (para && !para.textContent.trim() && !para.querySelector('img, picture, iframe')) {
+        para.remove();
+      }
+    });
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 
     // 6. Sanitized path
