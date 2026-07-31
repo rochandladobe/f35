@@ -4,9 +4,10 @@
    brand-blue rectangular arrows and circular dot pagination. */
 
 /* Full-bleed navy "bottom wing" band. The source uses bgWingBottom.png — a navy
-   shape with a slanted left edge and a stepped notch. We reproduce it exactly by
-   stretching that PNG full-viewport-width behind the carousel (kept as a project
-   asset in /styles), so the signature diagonal matches the source at any width. */
+   shape with a slanted left edge and a stepped notch at bottom-right. It is drawn
+   full-viewport-width at the image's native aspect ratio (background-size:
+   100% auto) and anchored to the bottom-left, exactly as the source does — this
+   preserves the signature diagonal instead of flattening it into a solid block. */
 .carousel-social {
   position: relative;
   width: 100vw;
@@ -22,8 +23,8 @@
   z-index: 0;
   background-image: url("/styles/bg-wing-bottom.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+  background-position: left bottom;
+  background-size: 100% auto;
 }
 
 .carousel-social > * {
