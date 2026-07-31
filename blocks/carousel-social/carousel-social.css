@@ -236,4 +236,47 @@
   .carousel-social {
     padding: 72px 48px 104px;
   }
+
+  /* Desktop: the "Follow Us on Social Media" intro sits as a narrow column on
+     the light left region of the full-bleed navy band, vertically centered,
+     beside the centered carousel — matching the source. The carousel band is
+     full-bleed (100vw), so the intro is overlaid absolutely rather than gridded
+     (a grid column would break the band's viewport-centering math). */
+  main > .section.carousel-social-container {
+    position: relative;
+  }
+
+  .carousel-social-container > .default-content-wrapper:first-child {
+    position: absolute;
+    left: max(24px, calc(50vw - 600px + 24px));
+    top: 88px;
+    z-index: 2;
+    width: 190px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Intro heading ("Follow Us on Social Media") — mixed-case navy with a blue
+   underline, matching the source .sectionTitle (overrides global uppercase). */
+.carousel-social-container > .default-content-wrapper:first-child h2 {
+  display: inline-block;
+  margin: 0 0 10px;
+  border-bottom: 3px solid var(--brand-blue);
+  color: var(--brand-navy);
+  font-family: var(--heading-font-family);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.carousel-social-container > .default-content-wrapper:first-child p {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.2;
 }
