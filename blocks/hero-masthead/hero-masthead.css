@@ -22,12 +22,29 @@
   background-color: var(--brand-navy);
 }
 
-/* authored picture becomes the full-bleed background image */
-.hero-masthead picture {
+/* the image row (first row, holds the picture) becomes the full-bleed
+   background photo — it must NOT get the grey content panel styling */
+.hero-masthead > div:first-child {
   position: absolute;
   inset: 0;
   z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* the content row (second row) sits above the photo and holds the panel */
+.hero-masthead > div:last-child {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-masthead > div:first-child > div {
+  height: 100%;
+}
+
+.hero-masthead picture {
   display: block;
+  height: 100%;
 }
 
 .hero-masthead picture img {
@@ -37,23 +54,17 @@
   object-position: 50% 50%;
 }
 
-/* row wrapper — keep content above the background photo */
-.hero-masthead > div {
-  position: relative;
-  z-index: 1;
-}
-
-/* content cell = overlaid semi-transparent panel (source .semiTrans) */
-.hero-masthead > div > div {
+/* content cell = overlaid semi-transparent light-grey panel (source .semiTrans) */
+.hero-masthead > div:last-child > div {
   box-sizing: border-box;
   max-width: 50%;
   margin: 16px 0 16px 8.33%; /* source: 16px 0 16px 32.5px (offset-1) at mobile */
-  padding: 0 15px;
-  background-color: rgb(255 255 255 / 80%);
+  padding: 15px;
+  background-color: rgb(242 242 242 / 92%);
 }
 
 /* clear the floated CTA so the panel encloses it */
-.hero-masthead > div > div::after {
+.hero-masthead > div:last-child > div::after {
   content: "";
   display: block;
   clear: both;
@@ -118,7 +129,7 @@
 }
 
 @media (width >= 900px) {
-  .hero-masthead > div > div {
+  .hero-masthead > div:last-child > div {
     max-width: 41.6667%; /* source col-md-5 */
     margin: 48px 0 48px 8.33%; /* source: 48px 0 48px 106.6px (offset-1) */
   }
