@@ -37,24 +37,37 @@ export default function transform(hookName, element, payload) {
       '[id^="autocomplete-"]',
     ]);
 
-    // Homepage "News & Features" intro (in #homeSectionThree) is authored with
-    // styled <div>s (.sectionTitle, .homeSectionNewsFillerText) + an .actionButton
-    // link, sitting beside the 3 news cards. The cards-news block is scoped to the
-    // card wrapper only, so this intro stays as default content — but the <div>s
-    // don't convert to clean markdown. Promote the title <div> to an <h2> and the
-    // filler <div> to a <p> so it imports as a proper heading + paragraph + link.
-    const newsTitle = element.querySelector('#homeSectionThree .sectionTitle');
-    if (newsTitle) {
-      const h = element.ownerDocument.createElement('h2');
-      h.textContent = newsTitle.textContent.trim();
-      newsTitle.replaceWith(h);
-    }
-    const newsFiller = element.querySelector('#homeSectionThree .homeSectionNewsFillerText');
-    if (newsFiller) {
-      const p = element.ownerDocument.createElement('p');
-      p.textContent = newsFiller.textContent.trim();
-      newsFiller.replaceWith(p);
-    }
+    // Homepage "News & Features" (#homeSectionThree) and "Follow Us on Social
+    // Media" (#homeSectionFive) each pair an intro column — a styled
+    // .sectionTitle <div> + a .homeSectionNewsFillerText <div> — beside a
+    // card/carousel block. Those blocks are scoped to just the card wrapper, so
+    // the intro stays as default content; but the <div>s don't convert to clean
+    // markdown. Promote the title <div> to an <h2> and the filler <div> to a <p>
+    // in BOTH sections so each imports as a proper heading + paragraph.
+    ['#homeSectionThree', '#homeSectionFive'].forEach((sectionId) => {
+      const title = element.querySelector(`${sectionId} .sectionTitle`);
+      if (title) {
+        const h = element.ownerDocument.createElement('h2');
+        h.textContent = title.textContent.trim();
+        title.replaceWith(h);
+      }
+      const filler = element.querySelector(`${sectionId} .homeSectionNewsFillerText`);
+      if (filler) {
+        const p = element.ownerDocument.createElement('p');
+        p.textContent = filler.textContent.trim();
+        filler.replaceWith(p);
+      }
+    });
+
+    // The source social section (#homeSectionFive) ships Bootstrap carousel
+    // controls — prev/next anchors linking to #carousel-example-multi and an
+    // <ol> of indicator <li>s. Our carousel-social block builds its own controls
+    // and indicators, so remove the source ones (they otherwise import as stray
+    // empty SVG links and a bare numbered list below the carousel).
+    element.querySelectorAll('#homeSectionFive [href*="carousel-example"], #homeSectionFive [data-slide], #homeSectionFive [data-bs-slide]')
+      .forEach((el) => (el.closest('a, p') || el).remove());
+    element.querySelectorAll('#homeSectionFive .carousel-indicators, #homeSectionFive ol')
+      .forEach((el) => el.remove());
 
     // Homepage "Fast Facts" promo band (.bg-grad, not #homeSectionTwo) is a
     // columns-promo with a styled .sectionTitle <div> ("Fast Facts") and a

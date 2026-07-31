@@ -50,7 +50,8 @@ const PAGE_TEMPLATE = {
       {
         "name": "carousel-social",
         "instances": [
-          "#homeSectionFive"
+          "#homeSectionFive .carousel-inner",
+          "#homeSectionFive .d-flex.flex-row:has(.homeNewsCard)"
         ]
       }
     ],
