@@ -37,6 +37,46 @@ export default function transform(hookName, element, payload) {
       '[id^="autocomplete-"]',
     ]);
 
+    // Homepage "News & Features" intro (in #homeSectionThree) is authored with
+    // styled <div>s (.sectionTitle, .homeSectionNewsFillerText) + an .actionButton
+    // link, sitting beside the 3 news cards. The cards-news block is scoped to the
+    // card wrapper only, so this intro stays as default content — but the <div>s
+    // don't convert to clean markdown. Promote the title <div> to an <h2> and the
+    // filler <div> to a <p> so it imports as a proper heading + paragraph + link.
+    const newsTitle = element.querySelector('#homeSectionThree .sectionTitle');
+    if (newsTitle) {
+      const h = element.ownerDocument.createElement('h2');
+      h.textContent = newsTitle.textContent.trim();
+      newsTitle.replaceWith(h);
+    }
+    const newsFiller = element.querySelector('#homeSectionThree .homeSectionNewsFillerText');
+    if (newsFiller) {
+      const p = element.ownerDocument.createElement('p');
+      p.textContent = newsFiller.textContent.trim();
+      newsFiller.replaceWith(p);
+    }
+
+    // Decorative background "wing" graphics (bgWingTop/bgWingBottom) and the
+    // Fast Facts silhouette icon are pure CSS decoration on the source — applied
+    // as inline `background-image` (or lazy data-src), NOT authored <img>. Left
+    // in place, WebImporter.rules.transformBackgroundImages later converts them
+    // into real <img> tags that render as empty spacer bands. Remove the styled
+    // carrier elements up-front (in beforeTransform, before that conversion runs)
+    // by matching the background-image URL in the style/data attributes.
+    // Only remove the specific empty carrier <div>s whose inline background-image
+    // is a decorative wing/silhouette graphic. These are childless spacer divs —
+    // guard on that so we never remove a content-bearing ancestor.
+    element.querySelectorAll('[style*="bgWing"],[style*="homeFastFactsIcon"],[style*="TopClear"]')
+      .forEach((el) => {
+        if (el.children.length === 0 && !el.textContent.trim()) el.remove();
+      });
+
+    // Some wing graphics are authored as standalone decorative <img> (e.g.
+    // bgWingTop.png before the News heading). They carry no content and render
+    // as empty bands — remove the image and its wrapping <p>/<picture>.
+    element.querySelectorAll('img[src*="bgWing"], img[src*="homeFastFactsIcon"], img[src*="TopClear"], img[src*="bgWingBottom"]')
+      .forEach((img) => (img.closest('p, picture') || img).remove());
+
     // Global Enterprise partner-country pages ship the same content in multiple
     // languages: a visible <div id="English" class="language-block"> plus hidden
     // <div class="language-block d-none"> variants (Dutch, French, ...) toggled by
@@ -70,7 +110,18 @@ export default function transform(hookName, element, payload) {
       'img[src*="facebook.com/tr"]',
       'img[src*="analytics.twitter.com"]',
       'img[src*="t.co/i/adsct"]',
+      'img[src*="insight.adsrvr.org"]',
+      'img[src*="match.adsrvr.org"]',
+      'img[src*="doubleclick.net"]',
     ]);
+
+    // Hidden/duplicate CTAs that point nowhere (href="#") — e.g. the mobile-only
+    // "Go to News" link that duplicates the visible "Go To News" default-content
+    // CTA. Remove empty-fragment anchors so they don't create stray links.
+    element.querySelectorAll('a[href="#"]').forEach((a) => {
+      const li = a.closest('li');
+      (li || a).remove();
+    });
   }
 
   if (hookName === TransformHook.afterTransform) {
@@ -94,5 +145,20 @@ export default function transform(hookName, element, payload) {
     WebImporter.DOMUtils.remove(element, [
       '#universal_pixel_ukr5wva',
     ]);
+
+    // Hotjar/analytics safe-context anchor (<a href="about:blank">_hjSafeContext</a>)
+    // is injected by third-party JS at runtime, so it isn't present at
+    // beforeTransform — remove it here (and its emptied wrapping <p>).
+    element.querySelectorAll('a[href="about:blank"]').forEach((a) => {
+      const para = a.closest('p');
+      a.remove();
+      if (para && !para.textContent.trim() && !para.querySelector('img, picture, iframe')) {
+        para.remove();
+      }
+    });
+
+    // NOTE: decorative wing/silhouette backgrounds that WebImporter materializes
+    // into <img> via transformBackgroundImages are stripped in the import script
+    // AFTER that rule runs (this hook fires before it), so no removal here.
   }
 }
