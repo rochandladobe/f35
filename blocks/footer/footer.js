@@ -68,7 +68,9 @@ export default async function decorate(block) {
   if (columns) {
     columns.querySelectorAll(':scope > ul > li').forEach((li) => {
       li.classList.add('footer-column');
-      const heading = li.querySelector(':scope > a');
+      // heading is the first link in the column — it may be a bare <a> or,
+      // as delivered from the fragment, an <a> wrapped in a <p>.
+      const heading = li.querySelector(':scope > a, :scope > p > a');
       if (heading) heading.classList.add('footer-heading');
     });
   }
