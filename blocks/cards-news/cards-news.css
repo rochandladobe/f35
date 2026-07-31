@@ -1,6 +1,86 @@
 /* cards-news — F-35 "News & Features" teaser cards.
    Values extracted from https://www.f35.com/f35/index.html (#homeSectionThree). */
 
+/* Desktop layout of the whole News section (imported as one EDS section):
+   a narrow left intro column ("News & Features" heading + blurb + Go To News
+   button) bottom-aligned beside the 3-up card row, with the Fast Facts promo
+   spanning full width on a second row below — matching the source. */
+@media (width >= 900px) {
+  main > .section.cards-news-container {
+    display: grid;
+    grid-template-columns: 175px 1fr;
+    column-gap: 32px;
+    align-items: end;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 32px;
+  }
+
+  main > .section.cards-news-container > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cards-news-container > .default-content-wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    padding-bottom: 8px;
+  }
+
+  .cards-news-container > .cards-news-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cards-news-container > .columns-promo-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 40px;
+  }
+}
+
+/* Intro heading ("News & Features") — mixed-case navy with a blue underline,
+   matching the source .sectionTitle (overrides the global uppercase heading). */
+.cards-news-container > .default-content-wrapper h2 {
+  display: inline-block;
+  margin: 0 0 12px;
+  border-bottom: 3px solid var(--brand-blue);
+  color: var(--brand-navy);
+  font-family: var(--heading-font-family);
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cards-news-container > .default-content-wrapper p {
+  margin: 0 0 12px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.2;
+}
+
+/* "Go To News" CTA — solid brand-blue button (source: a.actionButton). */
+.cards-news-container > .default-content-wrapper a:any-link {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 8px 26px;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xs);
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 /* Full-bleed navy "top wing" band behind the news cards — reproduces the source
    bgWingTop.png (navy shape with a slanted left edge and a stepped top notch),
    stretched full-viewport-width so the cards sit on the diagonal navy band. */
