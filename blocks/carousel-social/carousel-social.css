@@ -31,8 +31,12 @@
   z-index: 1;
 }
 
+/* The viewport shows exactly TWO cards at a time and is centered in the band
+   (matches source). Width = 2 cards + the inter-card gap; auto margins center it. */
 .carousel-social .carousel-social-slides-container {
   position: relative;
+  width: min(100%, calc(2 * 300px + 50px));
+  margin-inline: auto;
 }
 
 .carousel-social .carousel-social-slides,
@@ -44,7 +48,7 @@
 
 .carousel-social .carousel-social-slides {
   display: flex;
-  gap: 24px;
+  gap: 50px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   overflow: scroll clip;
@@ -54,10 +58,10 @@
   display: none;
 }
 
-/* --- Card --- */
+/* --- Card --- each fills half the 2-up viewport (minus half the 50px gap). --- */
 .carousel-social .carousel-social-slide {
-  flex: 0 0 260px;
-  scroll-snap-align: center;
+  flex: 0 0 calc(50% - 25px);
+  scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -66,6 +70,7 @@
 
 /* Preview image on top (source: 300x181, ~5:3, cover) */
 .carousel-social .carousel-social-slide .carousel-social-slide-image {
+  position: relative;
   margin: 0;
 }
 
@@ -77,7 +82,29 @@
   object-fit: cover;
 }
 
-/* White card body with centered navy title */
+/* Platform icon (blue circular glyph) straddling the image/body seam, centered. */
+.carousel-social .carousel-social-slide .carousel-social-slide-icon {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-social .carousel-social-slide .carousel-social-slide-icon img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+/* White card body with centered navy title. Extra top padding leaves room for
+   the platform icon that overlaps the image/body seam. */
 .carousel-social .carousel-social-slide .carousel-social-slide-content {
   flex: 1 1 auto;
   display: flex;
@@ -85,7 +112,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px 20px 28px;
+  padding: 52px 20px 28px;
   background-color: #fff;
 }
 
@@ -200,14 +227,6 @@
 }
 
 @media (width >= 600px) {
-  .carousel-social .carousel-social-slides {
-    gap: 40px;
-  }
-
-  .carousel-social .carousel-social-slide {
-    flex: 0 0 300px;
-  }
-
   .carousel-social .carousel-social-navigation-buttons {
     top: 135px;
   }
@@ -215,10 +234,6 @@
 
 @media (width >= 900px) {
   .carousel-social {
-    padding: 56px 48px 40px;
-  }
-
-  .carousel-social .carousel-social-slides {
-    gap: 50px;
+    padding: 72px 48px 104px;
   }
 }

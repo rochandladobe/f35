@@ -68,6 +68,23 @@ function bindEvents(block) {
   });
 }
 
+// Maps a card's destination/title to its social-platform icon (blue circular
+// glyph overlaid on the preview image, as on the source). Icons ship with the
+// block; the imported content carries only the preview image, not the glyph.
+const PLATFORM_ICONS = [
+  { test: /x\.com|twitter/i, icon: 'socialIcon-X.png', label: 'X' },
+  { test: /facebook/i, icon: 'socialIconFacebook.png', label: 'Facebook' },
+  { test: /flickr|photos/i, icon: 'socialIconFlickr.png', label: 'Flickr' },
+  { test: /mediakit|media kit/i, icon: 'socialIconMedia.png', label: 'Media Kit' },
+];
+
+function iconFor(slide) {
+  const href = slide.querySelector('a[href]')?.getAttribute('href') || '';
+  const title = slide.querySelector('h1, h2, h3, h4, h5, h6')?.textContent || '';
+  const hay = `${href} ${title}`;
+  return PLATFORM_ICONS.find((p) => p.test.test(hay)) || null;
+}
+
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
@@ -78,6 +95,20 @@ function createSlide(row, slideIndex, carouselId) {
     column.classList.add(`carousel-social-slide-${colIdx === 0 ? 'image' : 'content'}`);
     slide.append(column);
   });
+
+  // Overlay the platform icon on the image cell, centered on its bottom edge.
+  const match = iconFor(slide);
+  const imageCell = slide.querySelector('.carousel-social-slide-image');
+  if (match && imageCell) {
+    const badge = document.createElement('span');
+    badge.className = 'carousel-social-slide-icon';
+    const iconImg = document.createElement('img');
+    iconImg.src = new URL(`icons/${match.icon}`, import.meta.url).href;
+    iconImg.alt = match.label;
+    iconImg.loading = 'lazy';
+    badge.append(iconImg);
+    imageCell.append(badge);
+  }
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {
