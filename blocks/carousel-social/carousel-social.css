@@ -24,7 +24,7 @@
   inset: 0;
   z-index: 0;
   background-color: var(--brand-navy);
-  clip-path: polygon(40% 0, 100% 0, 100% 72%, 42% 100%, 0 100%);
+  clip-path: polygon(37% 4%, 100% 4%, 100% 71%, 39% 100%, 0 100%);
 }
 
 .carousel-social > * {
