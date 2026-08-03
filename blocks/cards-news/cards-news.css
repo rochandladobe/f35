@@ -14,12 +14,42 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 32px;
+
+    /* anchor the full-bleed navy band to the centered section (see ::before) */
+    position: relative;
+  }
+
+  /* Full-bleed navy band, anchored to the centered section so its 100vw math is
+     symmetric — the band reaches BOTH viewport edges. A clip-path cuts the
+     signature diagonal on the left (leaning right as it descends), leaving a
+     white triangle at bottom-left where the "News & Features" intro sits — so
+     the navy never covers the intro text at any width. z-index:-1 keeps it
+     behind the section content. */
+  main > .section.cards-news-container::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    background-color: var(--brand-navy);
+
+    /* Navy spans the full width across the TOP, then a triangle is cut from the
+       bottom-left so the "News & Features" intro sits on white — matching the
+       source. The cut runs from the left edge at 210px down (just above the
+       intro heading) diagonally to a bottom vertex ~40px right of the intro
+       column. Both bottom/left vertices are anchored to the page center
+       (calc(50% − …)) so they track the centered 1200px content at any width,
+       keeping the intro clear of navy when the viewport is wide/zoomed out. */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(50% - 385px) 100%, 0 210px);
   }
 
   main > .section.cards-news-container > div {
     max-width: none;
     margin: 0;
     padding: 0;
+    position: relative;
   }
 
   .cards-news-container > .default-content-wrapper {
@@ -81,14 +111,13 @@
   white-space: nowrap;
 }
 
-/* Full-bleed navy "top wing" band behind the news cards. The source draws
-   bgWingTop.png (navy shape with a slanted left edge, full-width on the right)
-   at its native aspect ratio (background-size: 100% auto), top-anchored — this
-   keeps the signature diagonal instead of flattening it into a solid block. */
 .cards-news {
   position: relative;
 }
 
+/* Mobile (<900px): the section is not a grid, so draw the full-bleed navy band
+   on the cards block itself. On desktop the band moves to the section ::before
+   (above) so its 100vw math stays centered; suppress this one there. */
 .cards-news::before {
   content: "";
   position: absolute;
@@ -101,6 +130,12 @@
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% auto;
+}
+
+@media (width >= 900px) {
+  .cards-news::before {
+    content: none;
+  }
 }
 
 .cards-news > ul {
