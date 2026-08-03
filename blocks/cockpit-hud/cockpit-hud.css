@@ -1,0 +1,274 @@
+/* cockpit-hud — "Pilot Experience" (Section 6) */
+.cockpit-hud-container .cockpit-hud-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.cockpit-hud {
+  padding: 14vh 24px;
+  background: radial-gradient(120% 80% at 50% 30%, #0c1620, #05070b 70%);
+  color: var(--fx-ink);
+}
+
+.ch-head {
+  max-width: var(--fx-maxw);
+  margin: 0 auto 5vh;
+  text-align: center;
+}
+
+.ch-head h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 62px);
+  line-height: 1;
+}
+
+.ch-stage {
+  position: relative;
+  max-width: 1040px;
+  min-height: 62vh;
+  margin: 0 auto;
+  padding: 4vh 0;
+  border: 1px solid var(--fx-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgb(10 20 30 / 60%), rgb(5 7 11 / 60%));
+}
+
+/* canopy frame vignette */
+.ch-canopy {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 60% at 50% 40%, transparent 60%, rgb(0 0 0 / 60%)), repeating-linear-gradient(120deg, transparent 0 60px, rgb(255 255 255 / 2%) 60px 61px);
+  pointer-events: none;
+}
+
+.ch-hud {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.ch-reticle {
+  width: min(70%, 560px);
+  height: auto;
+  color: var(--fx-blue-glow);
+  filter: drop-shadow(0 0 12px rgb(90 169 255 / 45%));
+  animation: ch-flicker 5s ease-in-out infinite;
+}
+
+.ch-ring {
+  stroke: rgb(90 169 255 / 55%);
+  stroke-width: 1.5;
+}
+
+.ch-ring-in {
+  stroke: rgb(90 169 255 / 30%);
+  stroke-dasharray: 4 6;
+}
+
+.ch-tick {
+  stroke: rgb(90 169 255 / 70%);
+  stroke-width: 2;
+}
+
+.ch-cross {
+  stroke: rgb(90 169 255 / 45%);
+  stroke-width: 1.5;
+}
+
+.ch-readouts {
+  position: absolute;
+  inset: 20px 24px auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--fx-blue-glow);
+  font-family: var(--heading-font-family);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+}
+
+.ch-readout b {
+  color: rgb(255 255 255 / 55%);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* interactive callouts */
+.ch-hot {
+  position: absolute;
+  z-index: 2;
+}
+
+.ch-hot-a {
+  top: 26%;
+  left: 16%;
+}
+
+.ch-hot-b {
+  top: 34%;
+  right: 14%;
+}
+
+.ch-hot-c {
+  bottom: 30%;
+  left: 22%;
+}
+
+.ch-hot-d {
+  bottom: 24%;
+  right: 20%;
+}
+
+.ch-hot-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgb(90 169 255 / 30%);
+  border-radius: 20px;
+  background: rgb(10 16 22 / 70%);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.ch-hot-mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fx-blue-glow);
+  box-shadow: 0 0 0 4px rgb(90 169 255 / 20%);
+  animation: ch-ping 2.4s ease-in-out infinite;
+}
+
+.ch-hot-btn:hover, .ch-hot-btn:focus-visible {
+  border-color: var(--fx-blue-glow);
+  outline: none;
+}
+
+.ch-tip {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: max-content;
+  max-width: 240px;
+  padding: 10px 12px;
+  background: rgb(5 7 11 / 95%);
+  border: 1px solid var(--fx-line);
+  border-radius: 6px;
+  color: var(--fx-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.ch-hot-btn:hover + .ch-tip, .ch-hot-btn:focus-visible + .ch-tip {
+  opacity: 1;
+  transform: none;
+}
+
+.ch-quote {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.ch-quote blockquote {
+  margin: 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: clamp(22px, 3.4vw, 38px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.ch-quote blockquote::before {
+  content: "\201C";
+  color: var(--fx-blue-glow);
+}
+
+.ch-quote blockquote::after {
+  content: "\201D";
+  color: var(--fx-blue-glow);
+}
+
+.ch-quote figcaption {
+  margin-top: 16px;
+  color: var(--fx-amber);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@keyframes ch-flicker {
+  0%, 100% {
+    opacity: 0.92;
+  }
+
+  48% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes ch-ping {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgb(90 169 255 / 25%);
+  }
+
+  50% {
+    box-shadow: 0 0 0 7px rgb(90 169 255 / 6%);
+  }
+}
+
+@media (width <= 799px) {
+  .ch-stage {
+    min-height: 0;
+  }
+
+  .ch-hot {
+    position: relative;
+    inset: auto;
+    display: inline-block;
+    margin: 6px;
+  }
+
+  .ch-callouts {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24vh;
+  }
+
+  .ch-tip {
+    position: static;
+    opacity: 1;
+    transform: none;
+    max-width: none;
+    margin-top: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-reticle, .ch-hot-mark {
+    animation: none;
+  }
+}

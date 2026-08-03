@@ -1,0 +1,122 @@
+/* resource-grid — "Resources" (Section 9) */
+.resource-grid-container .resource-grid-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.resource-grid {
+  padding: 14vh 24px 16vh;
+  background: linear-gradient(180deg, #0a0f16 0%, #05070b 100%);
+  color: var(--fx-ink);
+}
+
+.rg-head {
+  max-width: var(--fx-maxw);
+  margin: 0 auto 5vh;
+}
+
+.rg-head h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 62px);
+  line-height: 1;
+}
+
+.rg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: var(--fx-maxw);
+  margin: 0 auto;
+}
+
+.rg-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 190px;
+  padding: 26px;
+  background: linear-gradient(180deg, rgb(27 33 41 / 85%), rgb(18 22 29 / 85%));
+  border: 1px solid var(--fx-line);
+  border-radius: 8px;
+  color: var(--fx-ink);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+html.sfx-ready .rg-card[data-reveal] {
+  transition-delay: calc(var(--rg-i, 0) * 70ms);
+}
+
+.rg-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--fx-blue), var(--fx-blue-glow));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.rg-card:hover, .rg-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgb(40 129 225 / 45%);
+  box-shadow: 0 26px 50px rgb(0 0 0 / 45%);
+  outline: none;
+  color: var(--fx-ink);
+}
+
+.rg-card:hover::after, .rg-card:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.rg-num {
+  color: var(--fx-blue-glow);
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.rg-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rg-title {
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.04;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.rg-desc {
+  margin-top: 10px;
+  color: var(--fx-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.rg-arrow {
+  align-self: flex-end;
+  display: inline-flex;
+  color: var(--fx-muted);
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.rg-arrow svg {
+  width: 26px;
+  height: 26px;
+}
+
+.rg-card:hover .rg-arrow, .rg-card:focus-visible .rg-arrow {
+  transform: translateX(6px);
+  color: var(--fx-blue-glow);
+}
