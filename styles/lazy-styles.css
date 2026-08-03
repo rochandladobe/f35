@@ -48,6 +48,23 @@ html.sfx-ready [data-parallax] {
   will-change: transform;
 }
 
+/* home-experience: the full-bleed dark blocks must tile seamlessly, so remove
+   the default 40px inter-section margins (which otherwise show the white page
+   background as bands between sections). Scoped to these block containers so
+   other pages keep the standard section rhythm. */
+main > .section.hero-cinematic-container,
+main > .section.stat-parallax-container,
+main > .section.tech-reveal-container,
+main > .section.mission-scroll-container,
+main > .section.global-map-container,
+main > .section.cockpit-hud-container,
+main > .section.timeline-parallax-container,
+main > .section.future-ready-container,
+main > .section.resource-grid-container {
+  margin: 0;
+  background-color: var(--fx-black);
+}
+
 /* shared intro utilities for the home-experience (cinematic) blocks */
 .fx-eyebrow {
   margin: 0 0 10px;
