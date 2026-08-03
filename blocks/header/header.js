@@ -175,9 +175,14 @@ export default async function decorate(block) {
   const navBrand = nav.querySelector('.nav-brand');
   if (navBrand) navBrand.querySelectorAll('p').forEach((p) => p.replaceWith(...p.childNodes));
 
-  // sections: mark dropdowns
+  // sections: unwrap the <p> the fragment wraps each top-level link in, so the
+  // trigger anchor is a direct child of the <li> (the caret CSS and the click
+  // handler both target `.nav-drop > a`). Then mark the dropdowns.
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
+    navSections.querySelectorAll(':scope > ul > li > p').forEach((p) => {
+      p.replaceWith(...p.childNodes);
+    });
     navSections.querySelectorAll(':scope > ul > li').forEach((li) => {
       if (li.querySelector('ul')) li.classList.add('nav-drop');
     });
