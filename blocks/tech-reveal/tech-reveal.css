@@ -1,0 +1,113 @@
+/* tech-reveal — "Technology" (Section 3) */
+.tech-reveal-container .tech-reveal-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.tech-reveal {
+  padding: 14vh 24px;
+  background: linear-gradient(180deg, #0a0f16 0%, #0c121a 100%);
+  color: var(--fx-ink);
+}
+
+.tr-head {
+  max-width: var(--fx-maxw);
+  margin: 0 auto 6vh;
+}
+
+.tr-head h2 {
+  margin: 0;
+  max-width: 18ch;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.02;
+}
+
+.tr-head .fx-lede {
+  margin-top: 18px;
+}
+
+.tr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: var(--fx-maxw);
+  margin: 0 auto;
+}
+
+.tr-card {
+  position: relative;
+  padding: 30px 26px 34px;
+  background: linear-gradient(180deg, rgb(27 33 41 / 90%), rgb(18 22 29 / 90%));
+  border: 1px solid var(--fx-line);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* per-card reveal stagger driven by --tr-i */
+html.sfx-ready .tr-card[data-reveal] {
+  transition-delay: calc(var(--tr-i, 0) * 90ms);
+}
+
+.tr-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--fx-blue), transparent);
+  opacity: 0.6;
+}
+
+.tr-card:hover {
+  transform: translateY(-6px);
+  border-color: rgb(40 129 225 / 45%);
+  box-shadow: 0 24px 50px rgb(0 0 0 / 45%);
+}
+
+.tr-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(90 169 255 / 35%);
+  border-radius: 8px;
+  color: var(--fx-blue-glow);
+  background: rgb(40 129 225 / 10%);
+}
+
+.tr-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.tr-index {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  color: rgb(255 255 255 / 18%);
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.tr-title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.tr-desc {
+  margin: 0;
+  color: var(--fx-muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.tr-desc p {
+  margin: 0;
+}

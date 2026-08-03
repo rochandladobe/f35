@@ -25,4 +25,21 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* cinematic homepage — dark aerospace palette (matte black → steel, with
+     restrained F-35 blue / amber / alert-red accents). Used by the immersive
+     home-experience blocks; see drafts/home-experience.html. */
+  --fx-black: #0a0d12;
+  --fx-graphite: #12161d;
+  --fx-gunmetal: #1b2129;
+  --fx-steel: #2b333d;
+  --fx-steel-2: #3a444f;
+  --fx-ink: #e8edf2;
+  --fx-muted: #9aa7b4;
+  --fx-line: rgb(255 255 255 / 8%);
+  --fx-blue: #2881e1;
+  --fx-blue-glow: #5aa9ff;
+  --fx-amber: #ffc72c;
+  --fx-alert: #ff3b30;
+  --fx-maxw: 1200px;
 }

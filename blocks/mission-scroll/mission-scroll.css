@@ -1,0 +1,142 @@
+/* mission-scroll — "Mission Capabilities" (Section 4) */
+.mission-scroll-container .mission-scroll-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.mission-scroll {
+  background: #05070b;
+  color: var(--fx-ink);
+}
+
+.ms-sticky {
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-track {
+  display: flex;
+  flex-direction: column;
+}
+
+/* pinned corner label */
+.ms-label {
+  position: absolute;
+  top: 8vh;
+  left: max(24px, 6vw);
+  z-index: 3;
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.ms-label h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1;
+}
+
+/* panels — stacked by default (mobile / reduced-motion) */
+.ms-panel {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 82vh;
+  padding: max(24px, 6vw);
+  overflow: hidden;
+}
+
+.ms-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* distinct atmospheric scene per mission */
+.ms-panel:nth-child(1) .ms-scene {
+  background: radial-gradient(80% 70% at 70% 20%, rgb(40 129 225 / 30%), transparent 60%), linear-gradient(160deg, #0a1420, #05070b);
+}
+
+.ms-panel:nth-child(2) .ms-scene {
+  background: radial-gradient(80% 70% at 30% 80%, rgb(255 59 48 / 20%), transparent 60%), linear-gradient(160deg, #150a0c, #05070b);
+}
+
+.ms-panel:nth-child(3) .ms-scene {
+  background: radial-gradient(80% 70% at 60% 30%, rgb(90 169 255 / 24%), transparent 60%), linear-gradient(160deg, #0a1018, #05070b);
+}
+
+.ms-panel:nth-child(4) .ms-scene {
+  background: radial-gradient(80% 70% at 40% 70%, rgb(255 199 44 / 16%), transparent 60%), linear-gradient(160deg, #131007, #05070b);
+}
+
+.ms-panel:nth-child(5) .ms-scene {
+  background: radial-gradient(80% 70% at 75% 60%, rgb(40 129 225 / 26%), transparent 60%), linear-gradient(160deg, #0a141c, #05070b);
+}
+
+/* HUD scanline texture over every scene */
+.ms-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(0deg, rgb(255 255 255 / 4%) 0 1px, transparent 1px 3px);
+  mask-image: radial-gradient(70% 70% at 50% 50%, #000, transparent);
+  opacity: 0.5;
+}
+
+.ms-body {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.ms-num {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--fx-blue-glow);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.ms-num span {
+  color: rgb(255 255 255 / 35%);
+}
+
+.ms-title {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(38px, 7vw, 92px);
+  line-height: 0.96;
+}
+
+.ms-desc {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--fx-muted);
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.55;
+}
+
+/* ---- horizontal mode (desktop, motion-ok) ---- */
+.mission-scroll.ms-horizontal .ms-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.mission-scroll.ms-horizontal .ms-track {
+  flex-direction: row;
+  height: 100vh;
+  will-change: transform;
+}
+
+.mission-scroll.ms-horizontal .ms-panel {
+  flex: 0 0 100vw;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.mission-scroll.ms-horizontal .ms-body {
+  margin-left: max(24px, 6vw);
+}

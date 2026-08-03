@@ -1,0 +1,140 @@
+/* timeline-parallax — "Innovation Timeline" (Section 7) */
+.timeline-parallax-container .timeline-parallax-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.timeline-parallax {
+  padding: 14vh 24px;
+  background: linear-gradient(180deg, #05070b 0%, #0a0f16 100%);
+  color: var(--fx-ink);
+}
+
+.tp-head {
+  max-width: var(--fx-maxw);
+  margin: 0 auto 6vh;
+  text-align: center;
+}
+
+.tp-head h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 62px);
+  line-height: 1;
+}
+
+.tp-line {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* central spine */
+.tp-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--fx-blue), rgb(40 129 225 / 10%));
+}
+
+.tp-item {
+  position: relative;
+  padding: 0 0 6vh 60px;
+}
+
+.tp-node {
+  position: absolute;
+  top: 6px;
+  left: 13px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fx-black);
+  border: 2px solid var(--fx-blue-glow);
+  box-shadow: 0 0 0 6px rgb(40 129 225 / 12%);
+}
+
+.tp-year {
+  display: block;
+  margin-bottom: 6px;
+  color: rgb(255 255 255 / 22%);
+  font-family: var(--heading-font-family);
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tp-card {
+  padding: 22px 24px;
+  background: linear-gradient(180deg, rgb(27 33 41 / 85%), rgb(18 22 29 / 85%));
+  border: 1px solid var(--fx-line);
+  border-radius: 8px;
+}
+
+.tp-step {
+  color: var(--fx-amber);
+  font-family: var(--heading-font-family);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.tp-title {
+  margin: 6px 0 8px;
+  color: #fff;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.05;
+}
+
+.tp-desc {
+  margin: 0;
+  color: var(--fx-muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.tp-desc p {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .tp-line::before {
+    left: 50%;
+    transform: translateX(-1px);
+  }
+
+  .tp-item {
+    width: 50%;
+    padding-bottom: 8vh;
+  }
+
+  .tp-item-left {
+    left: 0;
+    padding-right: 48px;
+    padding-left: 0;
+    text-align: right;
+  }
+
+  .tp-item-right {
+    left: 50%;
+    padding-left: 48px;
+  }
+
+  .tp-item-left .tp-node {
+    left: auto;
+    right: -8px;
+  }
+
+  .tp-item-right .tp-node {
+    left: -8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-year {
+    transform: none !important;
+  }
+}

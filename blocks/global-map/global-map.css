@@ -1,0 +1,176 @@
+/* global-map — "Global Partnership" (Section 5) */
+.global-map-container .global-map-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.global-map {
+  padding: 14vh 24px;
+  background: radial-gradient(70% 60% at 50% 42%, rgb(40 129 225 / 14%), transparent 70%), linear-gradient(180deg, #05070b 0%, #0a0f16 100%);
+  color: var(--fx-ink);
+  overflow: hidden;
+}
+
+.gm-head {
+  max-width: var(--fx-maxw);
+  margin: 0 auto 5vh;
+  text-align: center;
+}
+
+.gm-head h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 62px);
+  line-height: 1;
+}
+
+.gm-head .fx-lede {
+  margin: 16px auto 0;
+}
+
+.gm-stage {
+  display: grid;
+  gap: 4vh;
+  max-width: var(--fx-maxw);
+  margin: 0 auto;
+}
+
+.gm-map {
+  position: relative;
+}
+
+.gm-svg {
+  width: 100%;
+  height: auto;
+}
+
+.gm-grat ellipse {
+  stroke: rgb(120 160 200 / 12%);
+  stroke-width: 1;
+}
+
+.gm-arc {
+  stroke: rgb(90 169 255 / 45%);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  opacity: 0;
+}
+
+.gm-halo {
+  fill: rgb(90 169 255 / 22%);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.gm-dot {
+  fill: var(--fx-blue-glow);
+  opacity: 0;
+}
+
+/* no-JS fallback: show the network statically. Declared before the
+   higher-specificity .sfx-in rules below to satisfy source ordering. */
+html:not(.sfx-ready) .gm-dot,
+html:not(.sfx-ready) .gm-arc {
+  opacity: 1;
+}
+
+/* illuminate nodes + arcs once the map reveals, staggered by --gm-i */
+html.sfx-ready .gm-map.sfx-in .gm-dot {
+  animation: gm-pop 0.5s ease both;
+  animation-delay: calc(var(--gm-i) * 90ms + 200ms);
+}
+
+html.sfx-ready .gm-map.sfx-in .gm-halo {
+  animation: gm-pulse 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--gm-i) * 90ms + 400ms);
+}
+
+html.sfx-ready .gm-map.sfx-in .gm-arc {
+  animation: gm-arc 0.8s ease forwards;
+  animation-delay: calc(var(--gm-i, 0) * 60ms + 300ms);
+}
+
+.gm-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding-top: 2vh;
+  border-top: 1px solid var(--fx-line);
+}
+
+.gm-stat {
+  text-align: center;
+}
+
+.gm-value {
+  display: block;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.gm-label {
+  display: block;
+  margin-top: 8px;
+  color: var(--fx-muted);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@keyframes gm-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gm-pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes gm-arc {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 40;
+  }
+
+  to {
+    opacity: 0.7;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (width >= 900px) {
+  .gm-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-dot, .gm-arc {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .gm-halo {
+    animation: none !important;
+  }
+}
