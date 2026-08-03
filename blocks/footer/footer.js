@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { normalizeInternalLinks } from '../../scripts/links.js';
 
 /**
  * Fetches the footer fragment markup. Tries the footer metadata path (the
@@ -55,6 +56,7 @@ export default async function decorate(block) {
   const holder = document.createElement('div');
   holder.innerHTML = fragment.html;
   resolveRelativeImages(holder, fragment.base);
+  normalizeInternalLinks(holder);
 
   // label the top-level sections: link columns + brand
   const sections = ['columns', 'brand'];
