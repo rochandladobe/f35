@@ -304,6 +304,12 @@ main > .section {
   overflow-x: clip;
 }
 
+/* An empty section (e.g. a trailing metadata-only section) must not add
+   vertical whitespace — otherwise it pushes the following section/footer down. */
+main > .section:empty {
+  margin: 0;
+}
+
 main > .section > div {
   max-width: 1200px;
   margin: auto;
