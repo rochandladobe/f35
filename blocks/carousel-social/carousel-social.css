@@ -3,13 +3,25 @@
    navy band, white cards (~300px) with preview image + centered navy title,
    brand-blue rectangular arrows and circular dot pagination. */
 
+/* The social section is the last content section; drop its bottom margin so the
+   band's bottom edge meets the footer directly (no white gap), as on the source. */
+main > .section.carousel-social-container {
+  margin-bottom: 0;
+}
+
+/* The last default-content wrapper holds only leftover tracking-pixel images
+   and a hidden analytics anchor (no visible content) — hide it so it doesn't
+   add height between the band and the footer. */
+.carousel-social-container > .carousel-social-wrapper ~ .default-content-wrapper {
+  display: none;
+}
+
 /* Full-bleed navy "bottom wing" band. The source's bgWingBottom.png is a navy
    parallelogram: a slanted left edge (from ~37% at the top down to the left edge
    at the bottom) and a stepped notch at the bottom-right (the right edge drops
    from full-width down-left to ~39%). Stretching the PNG flattened that shape, so
    we reproduce it exactly with a clip-path over a solid-navy full-bleed block —
-   this keeps both diagonals crisp and lets the navy reach both viewport edges.
-   Polygon vertices are the PNG's measured navy boundary (1320x603). */
+   this keeps both diagonals crisp and lets the navy reach both viewport edges. */
 .carousel-social {
   position: relative;
   width: 100vw;
