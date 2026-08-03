@@ -3,7 +3,7 @@
 :root {
   --f35-nav-color: #003478;
   --f35-nav-bg: #fff;
-  --f35-nav-hover-bg: #d5d5d5;
+  --f35-nav-hover-bg: #f7f7f7;
   --f35-nav-border: #e7e7e7;
   --f35-nav-shadow: 0 4px 4px rgb(0 0 0 / 20%);
 }
@@ -384,7 +384,7 @@ header nav .nav-search-submit {
     left: 50%;
     transform: translateX(-50%);
     min-width: 220px;
-    padding: 24px;
+    padding: 32px;
     background-color: var(--f35-nav-bg);
     border: 1px solid var(--f35-nav-border);
     border-radius: 4px;
@@ -410,6 +410,6 @@ header nav .nav-search-submit {
 
   header nav .nav-sections .nav-drop[aria-expanded='true'] > ul {
     display: grid;
-    gap: 4px 24px;
+    gap: 8px 32px;
   }
 }
