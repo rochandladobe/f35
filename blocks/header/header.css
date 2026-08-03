@@ -372,11 +372,15 @@ header nav .nav-search-submit {
     transform: rotate(-135deg);
   }
 
-  /* dropdown panels */
+  /* dropdown panels — anchored flush to the trigger (top: 100%) with no gap, so
+     moving the mouse from the trigger down into the panel never crosses a dead
+     zone that would fire mouseleave and close it. The visual offset from the nav
+     bar is created with an inner background inset (top padding), keeping the
+     hover region continuous. */
   header nav .nav-sections .nav-drop > ul {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     min-width: 220px;
