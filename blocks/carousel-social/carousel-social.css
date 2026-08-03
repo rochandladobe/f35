@@ -36,7 +36,14 @@ main > .section.carousel-social-container {
   inset: 0;
   z-index: 0;
   background-color: var(--brand-navy);
-  clip-path: polygon(30% 0, 100% 0, 100% 68%, 40% 100%, 0 100%);
+
+  /* Diagonal cut anchored to the page center (calc(50% ± px)) rather than band
+     percentages, so the slope tracks the centered 1200px content at any viewport
+     width and never creeps over the "Follow Us on Social Media" intro on the
+     left. Top-left vertex sits ~340px left of center (right of the intro),
+     slopes down to the bottom-left corner; the right edge drops to a bottom-right
+     notch ~120px right of center, as on the source. */
+  clip-path: polygon(calc(50% - 90px) 0, 100% 0, 100% 66%, calc(50% + 120px) 100%, 0 100%);
 }
 
 .carousel-social > * {
@@ -262,7 +269,7 @@ main > .section.carousel-social-container {
   .carousel-social-container > .default-content-wrapper:first-child {
     position: absolute;
     left: max(24px, calc(50vw - 600px + 24px));
-    top: 88px;
+    top: 40px;
     z-index: 2;
     width: 190px;
     max-width: none;
