@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { normalizeInternalLinks } from '../../scripts/links.js';
 
 // media query match that indicates desktop width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -158,6 +159,7 @@ export default async function decorate(block) {
   const holder = document.createElement('div');
   holder.innerHTML = fragment.html;
   resolveRelativeImages(holder, fragment.base);
+  normalizeInternalLinks(holder);
 
   const nav = document.createElement('nav');
   nav.id = 'nav';
