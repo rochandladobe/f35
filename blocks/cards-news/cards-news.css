@@ -17,6 +17,11 @@
 
     /* anchor the full-bleed navy band to the centered section (see ::before) */
     position: relative;
+
+    /* the global `main > .section { overflow-x: clip }` would crop the 100vw
+       band to this 1200px box; allow it to escape to the viewport edges. The
+       page-level clip on `main`/`body` still prevents any horizontal scroll. */
+    overflow: visible;
   }
 
   /* Full-bleed navy "top wing" band. Two background layers on one full-viewport
