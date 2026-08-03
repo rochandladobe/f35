@@ -19,30 +19,29 @@
     position: relative;
   }
 
-  /* Full-bleed navy band, anchored to the centered section so its 100vw math is
-     symmetric — the band reaches BOTH viewport edges. A clip-path cuts the
-     signature diagonal on the left (leaning right as it descends), leaving a
-     white triangle at bottom-left where the "News & Features" intro sits — so
-     the navy never covers the intro text at any width. z-index:-1 keeps it
-     behind the section content. */
+  /* Full-bleed navy "top wing" band. Two background layers on one full-viewport
+     pseudo (anchored to the centered section so 100vw is symmetric):
+       1. bgWingTop.png drawn at the 1200px content width, centered & top-aligned
+          — this carries the signature diagonal (navy full-width on the right, a
+          slanted left edge leaving a white triangle at bottom-left for the
+          "News & Features" intro), exactly as the source renders it.
+       2. a solid-navy block covering the right half of the viewport, seamlessly
+          continuing the image's navy out to the RIGHT viewport edge at any width.
+     Height is fixed to the image's native aspect at 1200px so the diagonal
+     completes over the card row and the intro always sits on white. z-index:-1
+     keeps it behind the section content. */
   main > .section.cards-news-container::before {
     content: "";
     position: absolute;
     z-index: -1;
     top: 0;
-    bottom: 0;
     left: calc(50% - 50vw);
     width: 100vw;
-    background-color: var(--brand-navy);
-
-    /* Navy spans the full width across the TOP, then a triangle is cut from the
-       bottom-left so the "News & Features" intro sits on white — matching the
-       source. The cut runs from the left edge at 210px down (just above the
-       intro heading) diagonally to a bottom vertex ~40px right of the intro
-       column. Both bottom/left vertices are anchored to the page center
-       (calc(50% − …)) so they track the centered 1200px content at any width,
-       keeping the intro clear of navy when the viewport is wide/zoomed out. */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(50% - 385px) 100%, 0 210px);
+    height: 548px;
+    background-image: url("/styles/bg-wing-top.png"), linear-gradient(var(--brand-navy), var(--brand-navy));
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, right top;
+    background-size: 1200px auto, 50vw 100%;
   }
 
   main > .section.cards-news-container > div {
