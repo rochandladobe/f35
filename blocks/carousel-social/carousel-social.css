@@ -47,10 +47,10 @@ main > .section.carousel-social-container {
      top on the right, its bottom sits at ~82% there (a white strip below, mirror
      as on the source. An ascending ramp on the content-left (base 50%-600px,
      aligned with the news wing's left edge; top 50%-120px); the navy touches the
-     footer across most of the width, then lifts off in a shallow diagonal near
-     the right (from 50%+100px up to ~82% at the right edge) leaving a white
-     triangle by the footer bottom-right, as on the source. */
-  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 82%, calc(50% + 100px) 100%, calc(50% - 600px) 100%);
+     footer across most of the width, then a short steep diagonal (50%+100px up to
+     50%+186px, parallel to the ramp) lifts it to a flat 82% edge, leaving a
+     horizontal white strip beneath the navy at the footer bottom-right. */
+  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 82%, calc(50% + 186px) 82%, calc(50% + 100px) 100%, calc(50% - 600px) 100%);
 }
 
 .carousel-social > * {
