@@ -52,7 +52,8 @@ const PAGE_TEMPLATE = {
       {
         "name": "embed-video",
         "instances": [
-          ".cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be']), .cnt-video:has(iframe[data-video-src])"
+          ".column:has(.cnt-video iframe[data-video-src]), .column:has(.cnt-video iframe[src*='youtube']), .column:has(.cnt-video iframe[src*='youtu.be'])",
+          ".cnt-video:not(.column .cnt-video):has(iframe[data-video-src]), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtube']), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtu.be'])"
         ]
       }
     ],
