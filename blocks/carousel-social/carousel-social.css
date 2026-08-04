@@ -16,12 +16,11 @@ main > .section.carousel-social-container {
   display: none;
 }
 
-/* Full-bleed navy "bottom wing" band. The source's bgWingBottom.png is a navy
-   parallelogram: a slanted left edge (from ~37% at the top down to the left edge
-   at the bottom) and a stepped notch at the bottom-right (the right edge drops
-   from full-width down-left to ~39%). Stretching the PNG flattened that shape, so
-   we reproduce it exactly with a clip-path over a solid-navy full-bleed block —
-   this keeps both diagonals crisp and lets the navy reach both viewport edges. */
+/* Full-bleed navy "bottom wing" band, reproducing the source bgWingBottom.png
+   shape: a diagonal ramp on the content-left (the navy rises from the bottom up
+   to a flat top) and a flat navy band that runs out to the right viewport edge.
+   Drawn with a clip-path over a solid-navy full-bleed block so the diagonal stays
+   crisp and the navy reaches the right edge at any width. */
 .carousel-social {
   position: relative;
   width: 100vw;
@@ -37,13 +36,14 @@ main > .section.carousel-social-container {
   z-index: 0;
   background-color: var(--brand-navy);
 
-  /* Diagonal cut anchored to the page center (calc(50% ± px)) rather than band
-     percentages, so the slope tracks the centered 1200px content at any viewport
-     width and never creeps over the "Follow Us on Social Media" intro on the
-     left. Top-left vertex sits ~340px left of center (right of the intro),
-     slopes down to the bottom-left corner; the right edge drops to a bottom-right
-     notch ~120px right of center, as on the source. */
-  clip-path: polygon(calc(50% - 90px) 0, 100% 0, 100% 66%, calc(50% + 120px) 100%, 0 100%);
+  /* Diagonal cut matching the source bgWingBottom.png: the navy's top edge is a
+     ramp confined to the content-left region (rises from the content-left bottom
+     up to ~120px left of center), then a flat navy band runs to the right
+     viewport edge. Anchored to page center (calc(50% ± px)) so the slope tracks
+     the centered 1200px content at any width. The earlier polygon ran the ramp
+     from the viewport bottom-left corner to center-top, producing a far too
+     steep, full-width wedge — this confines it to the content as on the source. */
+  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 100%, calc(50% - 540px) 100%);
 }
 
 .carousel-social > * {
