@@ -141,6 +141,12 @@
           "instances": [
             ".cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be']), .cnt-video:has(iframe[data-video-src])"
           ]
+        },
+        {
+          "name": "cards-jump",
+          "instances": [
+            ".d-flex:has(.jumpCard)"
+          ]
         }
       ],
       "sections": [
