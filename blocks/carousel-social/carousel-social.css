@@ -43,9 +43,11 @@ main > .section.carousel-social-container {
      the centered 1200px content at any width. The earlier polygon ran the ramp
      from the viewport bottom-left corner to center-top, producing a far too
      steep, full-width wedge — this confines it to the content as on the source.
-     The right edge drops to ~82% then angles to a bottom-right notch, matching
-     the source image's raised bottom-right. */
-  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 82%, calc(50% + 120px) 100%, calc(50% - 540px) 100%);
+     The band is the exact vertical mirror of the news wing: navy fills the full
+     top on the right, its bottom sits at ~82% there (a white strip below, mirror
+     of the news band's white strip above) and dips to full-bottom left of center,
+     with the ramp rising on the content-left. */
+  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 82%, 50% 82%, calc(50% - 240px) 100%, calc(50% - 560px) 100%);
 }
 
 .carousel-social > * {
