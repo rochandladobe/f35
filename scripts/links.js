@@ -37,6 +37,12 @@ export function normalizeInternalLinks(container) {
     if (!isSameOrigin && !isOldSite) return; // truly external — leave alone
     if (url.pathname.includes('/fragments/')) return;
 
+    // Skip media/asset files (video, images, docs). Only page routes are
+    // extensionless + lowercased; an asset path (e.g. a .mp4 masthead video or
+    // a .pdf) must keep its exact case and extension to remain reachable.
+    const ext = (url.pathname.match(/\.([a-z0-9]+)$/i) || [])[1];
+    if (ext && !/^html?$/i.test(ext)) return;
+
     let path = url.pathname
       .replace(/\.html$/i, '')
       .toLowerCase()

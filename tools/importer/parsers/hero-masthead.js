@@ -7,7 +7,24 @@
  * row3 = title (heading) + optional description + optional CTA.
  * Generated: 2026-07-30
  */
-export default function parse(element, { document }) {
+export default function parse(element, { document, url }) {
+  // Background video (optional). Some mastheads (e.g. the UK page) use an
+  // autoplay/muted/loop <video> background instead of a still image. Capture
+  // its .mp4 source as a link so the block can rebuild the <video> and offer a
+  // link out to the file. Absolute-ize a root-relative source against f35.com.
+  let bgVideoUrl = null;
+  const videoSource = element.querySelector('video source[src], video[src]');
+  if (videoSource) {
+    const raw = videoSource.getAttribute('src') || '';
+    if (raw) {
+      try {
+        bgVideoUrl = new URL(raw, url || 'https://www.f35.com').href;
+      } catch (e) {
+        bgVideoUrl = raw;
+      }
+    }
+  }
+
   // Background image (optional). Source masthead often uses a CSS background
   // set via an inline style="background-image:url(...)" rather than an <img>.
   // Capture an <img> if present; otherwise mine the inline background-image URL
@@ -60,15 +77,22 @@ export default function parse(element, { document }) {
   }
 
   // Empty-block guard.
-  if (!headingEl && !descriptionEl && ctaLinks.length === 0) {
+  if (!headingEl && !descriptionEl && ctaLinks.length === 0 && !bgVideoUrl && !bgImage) {
     element.replaceWith(...element.childNodes);
     return;
   }
 
   const cells = [];
 
-  // Row: background image (optional).
-  if (bgImage) {
+  // Row: background media (optional). Prefer a video background; the block JS
+  // rebuilds an autoplay/muted/loop <video> from this link and adds a link out
+  // to the file. Fall back to a still image.
+  if (bgVideoUrl) {
+    const a = document.createElement('a');
+    a.setAttribute('href', bgVideoUrl);
+    a.textContent = bgVideoUrl;
+    cells.push([a]);
+  } else if (bgImage) {
     cells.push([bgImage]);
   }
 
