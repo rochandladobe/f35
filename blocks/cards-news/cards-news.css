@@ -45,8 +45,14 @@
     height: 548px;
     background-image: url("/styles/bg-wing-top.png"), linear-gradient(var(--brand-navy), var(--brand-navy));
     background-repeat: no-repeat, no-repeat;
-    background-position: center top, right top;
-    background-size: 1200px auto, 50vw 100%;
+
+    /* The wing image's flat navy band sits at ~18% from the top (the left
+       triangle rises above it). The solid-navy right fill must match that band
+       level — bottom-aligned at ~82% of the 548px height (450px) — rather than
+       reaching the very top, which previously made the right half too tall and
+       stepped the top edge at center. */
+    background-position: center top, right bottom;
+    background-size: 1200px auto, 50vw 450px;
   }
 
   main > .section.cards-news-container > div {

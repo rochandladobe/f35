@@ -42,8 +42,10 @@ main > .section.carousel-social-container {
      viewport edge. Anchored to page center (calc(50% ± px)) so the slope tracks
      the centered 1200px content at any width. The earlier polygon ran the ramp
      from the viewport bottom-left corner to center-top, producing a far too
-     steep, full-width wedge — this confines it to the content as on the source. */
-  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 100%, calc(50% - 540px) 100%);
+     steep, full-width wedge — this confines it to the content as on the source.
+     The right edge drops to ~82% then angles to a bottom-right notch, matching
+     the source image's raised bottom-right. */
+  clip-path: polygon(calc(50% - 120px) 0, 100% 0, 100% 82%, calc(50% + 120px) 100%, calc(50% - 540px) 100%);
 }
 
 .carousel-social > * {
