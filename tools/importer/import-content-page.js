@@ -3,6 +3,8 @@
 
 // PARSER IMPORTS
 import heroMastheadParser from './parsers/hero-masthead.js';
+import cardsPilotParser from './parsers/cards-pilot.js';
+import embedVideoParser from './parsers/embed-video.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -11,6 +13,8 @@ import sectionsTransformer from './transformers/f35-sections.js';
 // PARSER REGISTRY
 const parsers = {
   'hero-masthead': heroMastheadParser,
+  'cards-pilot': cardsPilotParser,
+  'embed-video': embedVideoParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -27,10 +31,8 @@ const PAGE_TEMPLATE = {
       "https://www.f35.com/f35/about/fast-facts.html",
       "https://www.f35.com/f35/about/sustainment.html",
       "https://www.f35.com/f35/global-enterprise.html",
-      "https://www.f35.com/f35/global-enterprise/australia.html",
       "https://www.f35.com/f35/global-enterprise/romania.html",
       "https://www.f35.com/f35/global-enterprise/singapore.html",
-      "https://www.f35.com/f35/global-enterprise/united-kingdom.html",
       "https://www.f35.com/f35/global-enterprise/united-states.html",
       "https://www.f35.com/f35/news-and-features.html"
     ],
@@ -39,6 +41,19 @@ const PAGE_TEMPLATE = {
         "name": "hero-masthead",
         "instances": [
           "div.masthead"
+        ]
+      },
+      {
+        "name": "cards-pilot",
+        "instances": [
+          ".column:has(.row > [class*='col-lg-6'] .image img[src*='pilot'])"
+        ]
+      },
+      {
+        "name": "embed-video",
+        "instances": [
+          ".column:has(.cnt-video iframe[data-video-src]), .column:has(.cnt-video iframe[src*='youtube']), .column:has(.cnt-video iframe[src*='youtu.be'])",
+          ".cnt-video:not(.column .cnt-video):has(iframe[data-video-src]), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtube']), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtu.be'])"
         ]
       }
     ],
