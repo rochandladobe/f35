@@ -125,6 +125,13 @@
           ]
         },
         {
+          "name": "embed-ceros",
+          "instances": [
+            "[id^='experience-']:has(iframe.ceros-experience)",
+            "div:has(> iframe.ceros-experience)"
+          ]
+        },
+        {
           "name": "accordion",
           "instances": [
             ".tab-content-cq:has(.collapse.answer)"

@@ -1,0 +1,36 @@
+/*
+ * Embed (Ceros)
+ * Responsive interactive-experience iframe. The wrapper holds the source
+ * aspect ratio (--ceros-aspect = width/height) so the frame keeps the
+ * experience's proportions; a taller ratio is used on mobile so the
+ * interactive isn't cramped (matches the source data-mobile-aspectRatio).
+ */
+
+.embed-ceros {
+  margin: 24px 0;
+}
+
+.embed-ceros .embed-ceros-frame {
+  position: relative;
+  width: 100%;
+
+  /* mobile: taller (≈9:16) so the experience has room */
+  aspect-ratio: 0.5625;
+  background-color: var(--light-color, #f2f2f2);
+  overflow: hidden;
+}
+
+.embed-ceros .embed-ceros-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (width >= 900px) {
+  .embed-ceros .embed-ceros-frame {
+    /* desktop: the experience's native aspect ratio */
+    aspect-ratio: var(--ceros-aspect, 1.778);
+  }
+}
