@@ -3,6 +3,8 @@
 
 // PARSER IMPORTS
 import heroMastheadParser from './parsers/hero-masthead.js';
+import cardsPilotParser from './parsers/cards-pilot.js';
+import embedVideoParser from './parsers/embed-video.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -11,6 +13,8 @@ import sectionsTransformer from './transformers/f35-sections.js';
 // PARSER REGISTRY
 const parsers = {
   'hero-masthead': heroMastheadParser,
+  'cards-pilot': cardsPilotParser,
+  'embed-video': embedVideoParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -39,6 +43,18 @@ const PAGE_TEMPLATE = {
         "name": "hero-masthead",
         "instances": [
           "div.masthead"
+        ]
+      },
+      {
+        "name": "cards-pilot",
+        "instances": [
+          ".column:has(.row > [class*='col-lg-6'] .image img[src*='pilot'])"
+        ]
+      },
+      {
+        "name": "embed-video",
+        "instances": [
+          ".column:has(iframe[src*='youtube']), .column:has(iframe[src*='youtu.be']), .column:has(iframe[data-video-src])"
         ]
       }
     ],
