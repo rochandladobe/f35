@@ -6,6 +6,7 @@ import heroMastheadParser from './parsers/hero-masthead.js';
 import cardsPilotParser from './parsers/cards-pilot.js';
 import embedVideoParser from './parsers/embed-video.js';
 import accordionParser from './parsers/accordion.js';
+import cardsJumpParser from './parsers/cards-jump.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -17,6 +18,7 @@ const parsers = {
   'cards-pilot': cardsPilotParser,
   'embed-video': embedVideoParser,
   accordion: accordionParser,
+  'cards-jump': cardsJumpParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -49,6 +51,12 @@ const PAGE_TEMPLATE = {
         "name": "accordion",
         "instances": [
           ".tab-content-cq:has(.collapse.answer)"
+        ]
+      },
+      {
+        "name": "cards-jump",
+        "instances": [
+          ".d-flex:has(.jumpCard)"
         ]
       },
       {

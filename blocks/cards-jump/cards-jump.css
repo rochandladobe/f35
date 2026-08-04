@@ -1,0 +1,87 @@
+/* cards-jump — "Learn More About F-35" related-content cards.
+   Values from f35.com .jumpCard: 300px cards, 300x166 image, navy centered
+   title (20.5px), black left description (18.67px), blue "Learn More" button.
+   3-up on desktop, stacked on mobile; the whole card is one link. */
+
+.cards-jump > ul {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  justify-items: center;
+}
+
+@media (width >= 900px) {
+  .cards-jump > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.cards-jump > ul > li {
+  width: 100%;
+  max-width: 300px;
+  background-color: var(--background-color);
+}
+
+/* whole card is a single link — no underline, inherit text colors */
+.cards-jump .cards-jump-card-link,
+.cards-jump .cards-jump-card-link:any-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-jump .cards-jump-card-image {
+  line-height: 0;
+}
+
+.cards-jump .cards-jump-card-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 166;
+  object-fit: cover;
+}
+
+.cards-jump .cards-jump-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 12px 0 0;
+}
+
+.cards-jump .cards-jump-card-title {
+  margin: 0 0 10px;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: 20.5px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+}
+
+.cards-jump .cards-jump-card-desc {
+  margin: 0 0 16px;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 18.67px;
+  line-height: 1.2;
+}
+
+/* "Learn More" — solid brand-blue button, pushed to the card bottom */
+.cards-jump .cards-jump-card-cta {
+  margin: auto 0 0;
+  padding: 7px 0;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 21.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
