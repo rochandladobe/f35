@@ -1,0 +1,62 @@
+/* accordion — FAQ-style disclosure list.
+   Source: f35.com content-well "FAQ" accordions (question link + collapsible
+   answer panel). Navy question text with a +/− toggle, matching the source. */
+
+.accordion details {
+  border-bottom: 1px solid var(--f35-nav-border, #e7e7e7);
+}
+
+.accordion details:first-child {
+  border-top: 1px solid var(--f35-nav-border, #e7e7e7);
+}
+
+.accordion details .accordion-item-body p {
+  margin-bottom: 0.8em;
+}
+
+.accordion details summary {
+  position: relative;
+  padding: 16px 46px 16px 34px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--brand-navy);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.accordion details summary:focus,
+.accordion details summary:hover {
+  color: var(--brand-blue, #0059a8);
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* "+" toggle on the left, matching the source "+ Q:" affordance */
+.accordion details summary::before {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--brand-blue, #0059a8);
+}
+
+.accordion details[open] summary::before {
+  content: '\2212'; /* minus sign */
+}
+
+.accordion details .accordion-item-body {
+  padding: 0 34px 16px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.4;
+}

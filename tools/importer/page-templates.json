@@ -125,6 +125,12 @@
           ]
         },
         {
+          "name": "accordion",
+          "instances": [
+            ".tab-content-cq:has(.collapse.answer)"
+          ]
+        },
+        {
           "name": "cards-pilot",
           "instances": [
             ".column:has(.row > [class*='col-lg-6'] .image img[src*='pilot'])"
@@ -184,6 +190,12 @@
           "name": "hero-masthead",
           "instances": [
             "div.masthead"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            ".tab-content-cq:has(.collapse.answer)"
           ]
         },
         {
