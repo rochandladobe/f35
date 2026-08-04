@@ -9,15 +9,33 @@
  * Generated: 2026-07-30
  */
 export default function parse(element, { document }) {
-  // Each milestone card is a grid column that holds an image and a paragraph.
-  let items = Array.from(element.querySelectorAll(':scope > .row > [class*="col-"], [class*="col-"]'))
-    .filter((el) => el.querySelector('.image img, img') && el.querySelector('.cnt_paragraph'));
+  // A milestone is an image (.image) paired with its caption (.cnt_paragraph).
+  // A single grid column often packs SEVERAL such pairs, so iterate the images
+  // directly and pair each with the nearest following caption — this captures
+  // every milestone regardless of how many share a column. Each pairing yields
+  // one { image, paragraph } item.
+  const captionSel = '.cnt_paragraph';
+  let items = Array.from(element.querySelectorAll('.image')).map((imageWrap) => {
+    // Walk forward through siblings (and out to the column) to find the caption
+    // that belongs to this image.
+    let cur = imageWrap.nextElementSibling;
+    let caption = null;
+    while (cur) {
+      if (cur.matches(captionSel)) { caption = cur; break; }
+      const nested = cur.querySelector(captionSel);
+      if (nested) { caption = nested; break; }
+      if (cur.querySelector('.image')) break; // reached the next milestone
+      cur = cur.nextElementSibling;
+    }
+    return { image: imageWrap.querySelector('img'), paragraph: caption };
+  }).filter((it) => it.image);
 
-  // Fallback: derive items from paragraph wrappers if the column layout differs.
+  // Fallback: derive items straight from caption wrappers if no .image markers.
   if (items.length === 0) {
-    items = Array.from(element.querySelectorAll('.cnt_paragraph'))
-      .map((p) => p.closest('[class*="col-"]'))
-      .filter((el, i, arr) => el && arr.indexOf(el) === i);
+    items = Array.from(element.querySelectorAll(captionSel)).map((p) => {
+      const col = p.closest('[class*="col-"]') || p.parentElement;
+      return { image: col ? col.querySelector('img') : null, paragraph: p };
+    });
   }
 
   // Empty-block guard.
@@ -29,8 +47,8 @@ export default function parse(element, { document }) {
   const cells = [];
 
   items.forEach((item) => {
-    const image = item.querySelector('.image img, img');
-    const paragraph = item.querySelector('.cnt_paragraph');
+    const image = item.image;
+    const paragraph = item.paragraph;
 
     const contentCell = [];
 
