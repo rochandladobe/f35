@@ -5,6 +5,7 @@
 import heroMastheadParser from './parsers/hero-masthead.js';
 import cardsSpecsParser from './parsers/cards-specs.js';
 import cardsMilestoneParser from './parsers/cards-milestone.js';
+import accordionParser from './parsers/accordion.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -15,6 +16,7 @@ const parsers = {
   'hero-masthead': heroMastheadParser,
   'cards-specs': cardsSpecsParser,
   'cards-milestone': cardsMilestoneParser,
+  accordion: accordionParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -40,6 +42,12 @@ const PAGE_TEMPLATE = {
         "name": "hero-masthead",
         "instances": [
           "div.masthead"
+        ]
+      },
+      {
+        "name": "accordion",
+        "instances": [
+          ".tab-content-cq:has(.collapse.answer)"
         ]
       },
       {
