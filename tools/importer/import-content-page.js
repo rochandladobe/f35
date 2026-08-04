@@ -7,6 +7,7 @@ import cardsPilotParser from './parsers/cards-pilot.js';
 import embedVideoParser from './parsers/embed-video.js';
 import accordionParser from './parsers/accordion.js';
 import cardsJumpParser from './parsers/cards-jump.js';
+import embedCerosParser from './parsers/embed-ceros.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -19,6 +20,7 @@ const parsers = {
   'embed-video': embedVideoParser,
   accordion: accordionParser,
   'cards-jump': cardsJumpParser,
+  'embed-ceros': embedCerosParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -45,6 +47,13 @@ const PAGE_TEMPLATE = {
         "name": "hero-masthead",
         "instances": [
           "div.masthead"
+        ]
+      },
+      {
+        "name": "embed-ceros",
+        "instances": [
+          "[id^='experience-']:has(iframe.ceros-experience)",
+          "div:has(> iframe.ceros-experience)"
         ]
       },
       {
