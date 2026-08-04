@@ -31,7 +31,9 @@ const PAGE_TEMPLATE = {
       "https://www.f35.com/f35/global-enterprise/japan.html",
       "https://www.f35.com/f35/global-enterprise/poland.html",
       "https://www.f35.com/f35/global-enterprise/republic-of-korea.html",
-      "https://www.f35.com/f35/global-enterprise/switzerland.html"
+      "https://www.f35.com/f35/global-enterprise/switzerland.html",
+      "https://www.f35.com/f35/global-enterprise/australia.html",
+      "https://www.f35.com/f35/global-enterprise/united-kingdom.html"
     ],
     "blocks": [
       {
@@ -43,13 +45,15 @@ const PAGE_TEMPLATE = {
       {
         "name": "cards-specs",
         "instances": [
-          "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))"
+          "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))",
+          ".content-well:not(:has([id=\"English\" i])) .column:not(:has(.cnt_paragraph))"
         ]
       },
       {
         "name": "cards-milestone",
         "instances": [
-          "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)"
+          "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)",
+          ".content-well:not(:has([id=\"English\" i])) .column:has(.cnt_paragraph)"
         ]
       }
     ],

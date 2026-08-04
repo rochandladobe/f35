@@ -109,10 +109,8 @@
         "https://www.f35.com/f35/about/fast-facts.html",
         "https://www.f35.com/f35/about/sustainment.html",
         "https://www.f35.com/f35/global-enterprise.html",
-        "https://www.f35.com/f35/global-enterprise/australia.html",
         "https://www.f35.com/f35/global-enterprise/romania.html",
         "https://www.f35.com/f35/global-enterprise/singapore.html",
-        "https://www.f35.com/f35/global-enterprise/united-kingdom.html",
         "https://www.f35.com/f35/global-enterprise/united-states.html",
         "https://www.f35.com/f35/news-and-features.html"
       ],
@@ -124,6 +122,18 @@
           "name": "hero-masthead",
           "instances": [
             "div.masthead"
+          ]
+        },
+        {
+          "name": "cards-pilot",
+          "instances": [
+            ".column:has(.row > [class*='col-lg-6'] .image img[src*='pilot'])"
+          ]
+        },
+        {
+          "name": "embed-video",
+          "instances": [
+            ".cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be']), .cnt-video:has(iframe[data-video-src])"
           ]
         }
       ],
@@ -162,7 +172,9 @@
         "https://www.f35.com/f35/global-enterprise/japan.html",
         "https://www.f35.com/f35/global-enterprise/poland.html",
         "https://www.f35.com/f35/global-enterprise/republic-of-korea.html",
-        "https://www.f35.com/f35/global-enterprise/switzerland.html"
+        "https://www.f35.com/f35/global-enterprise/switzerland.html",
+        "https://www.f35.com/f35/global-enterprise/australia.html",
+        "https://www.f35.com/f35/global-enterprise/united-kingdom.html"
       ],
       "representativeUrl": "https://www.f35.com/f35/global-enterprise/belgium.html",
       "coverageGaps": [],
@@ -177,13 +189,15 @@
         {
           "name": "cards-specs",
           "instances": [
-            "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))"
+            "[id=\"English\" i] .content-well .column:not(:has(.cnt_paragraph))",
+            ".content-well:not(:has([id=\"English\" i])) .column:not(:has(.cnt_paragraph))"
           ]
         },
         {
           "name": "cards-milestone",
           "instances": [
-            "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)"
+            "[id=\"English\" i] .content-well .column:has(.cnt_paragraph)",
+            ".content-well:not(:has([id=\"English\" i])) .column:has(.cnt_paragraph)"
           ]
         }
       ],

@@ -31,10 +31,8 @@ const PAGE_TEMPLATE = {
       "https://www.f35.com/f35/about/fast-facts.html",
       "https://www.f35.com/f35/about/sustainment.html",
       "https://www.f35.com/f35/global-enterprise.html",
-      "https://www.f35.com/f35/global-enterprise/australia.html",
       "https://www.f35.com/f35/global-enterprise/romania.html",
       "https://www.f35.com/f35/global-enterprise/singapore.html",
-      "https://www.f35.com/f35/global-enterprise/united-kingdom.html",
       "https://www.f35.com/f35/global-enterprise/united-states.html",
       "https://www.f35.com/f35/news-and-features.html"
     ],
@@ -54,7 +52,7 @@ const PAGE_TEMPLATE = {
       {
         "name": "embed-video",
         "instances": [
-          ".column:has(iframe[src*='youtube']), .column:has(iframe[src*='youtu.be']), .column:has(iframe[data-video-src])"
+          ".cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be']), .cnt-video:has(iframe[data-video-src])"
         ]
       }
     ],
