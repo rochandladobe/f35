@@ -24,7 +24,10 @@ export default function parse(element, { document }) {
   items.forEach((item) => {
     const icon = item.querySelector('.image img, img');
     const titleEl = item.querySelector('.articleTitle, .title');
-    const list = item.querySelector('ul');
+    // The body copy lives in .cnt_paragraph: usually a <ul>, sometimes followed
+    // by supporting <p> text. Preserve both, in source order.
+    const bodyWrap = item.querySelector('.cnt_paragraph') || item;
+    const list = bodyWrap.querySelector('ul');
 
     // Icon cell.
     let iconCell = '';
@@ -58,6 +61,16 @@ export default function parse(element, { document }) {
       });
       body.push(cleanUl);
     }
+    // Supporting paragraph(s) after the list (e.g. economic-impact's supplier
+    // note) — keep them so no copy is lost.
+    bodyWrap.querySelectorAll('p').forEach((p) => {
+      const text = p.textContent.replace(/\s+/g, ' ').trim();
+      if (text) {
+        const np = document.createElement('p');
+        np.textContent = text;
+        body.push(np);
+      }
+    });
 
     cells.push([iconCell, body]);
   });

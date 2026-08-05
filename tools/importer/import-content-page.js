@@ -69,7 +69,7 @@ const PAGE_TEMPLATE = {
       {
         "name": "cards-feature",
         "instances": [
-          ".row:has(> [class*='col-lg-4'] > .title .articleTitle):has(> [class*='col-lg-4'] .image img):not(:has(.cnt-video)):not(:has(.video-placeholder))"
+          ".row:has(> [class*='col-lg-4'] > .title):has(> [class*='col-lg-4'] .image img):has(> [class*='col-lg-4'] ul):not(:has(.cnt-video)):not(:has(.video-placeholder)):not(:has(.jumpCard))"
         ]
       },
       {
