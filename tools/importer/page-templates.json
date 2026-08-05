@@ -146,13 +146,25 @@
         {
           "name": "embed-video",
           "instances": [
-            ".cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be']), .cnt-video:has(iframe[data-video-src])"
+            ".cnt-video:has(iframe[data-video-src]), .cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be'])"
           ]
         },
         {
           "name": "cards-jump",
           "instances": [
             ".d-flex:has(.jumpCard)"
+          ]
+        },
+        {
+          "name": "cards-video",
+          "instances": [
+            ".row:has(> [class*='col-'] > .youtube-shorts .video-placeholder[data-video-id])"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".row:has(> [class*='col-lg-4'] > .title .articleTitle):has(> [class*='col-lg-4'] .image img):not(:has(.cnt-video)):not(:has(.video-placeholder))"
           ]
         }
       ],
