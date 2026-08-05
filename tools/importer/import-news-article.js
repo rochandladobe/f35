@@ -3,6 +3,8 @@
 
 // PARSER IMPORTS
 import heroMastheadParser from './parsers/hero-masthead.js';
+import embedVideoParser from './parsers/embed-video.js';
+import cardsJumpParser from './parsers/cards-jump.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -11,6 +13,8 @@ import sectionsTransformer from './transformers/f35-sections.js';
 // PARSER REGISTRY
 const parsers = {
   'hero-masthead': heroMastheadParser,
+  'embed-video': embedVideoParser,
+  'cards-jump': cardsJumpParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -68,6 +72,18 @@ const PAGE_TEMPLATE = {
         "name": "hero-masthead",
         "instances": [
           "div.masthead"
+        ]
+      },
+      {
+        "name": "embed-video",
+        "instances": [
+          ".cnt-video:has(iframe[data-video-src]), .cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be'])"
+        ]
+      },
+      {
+        "name": "cards-jump",
+        "instances": [
+          ".d-flex:has(.jumpCard)"
         ]
       }
     ],
