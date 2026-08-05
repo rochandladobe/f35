@@ -8,6 +8,8 @@ import embedVideoParser from './parsers/embed-video.js';
 import accordionParser from './parsers/accordion.js';
 import cardsJumpParser from './parsers/cards-jump.js';
 import embedCerosParser from './parsers/embed-ceros.js';
+import cardsVideoParser from './parsers/cards-video.js';
+import cardsFeatureParser from './parsers/cards-feature.js';
 
 // TRANSFORMER IMPORTS
 import cleanupTransformer from './transformers/f35-cleanup.js';
@@ -21,6 +23,8 @@ const parsers = {
   accordion: accordionParser,
   'cards-jump': cardsJumpParser,
   'embed-ceros': embedCerosParser,
+  'cards-video': cardsVideoParser,
+  'cards-feature': cardsFeatureParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION (embedded from page-templates.json)
@@ -57,6 +61,18 @@ const PAGE_TEMPLATE = {
         ]
       },
       {
+        "name": "cards-video",
+        "instances": [
+          ".row:has(> [class*='col-'] > .youtube-shorts .video-placeholder[data-video-id])"
+        ]
+      },
+      {
+        "name": "cards-feature",
+        "instances": [
+          ".row:has(> [class*='col-lg-4'] > .title .articleTitle):has(> [class*='col-lg-4'] .image img):not(:has(.cnt-video)):not(:has(.video-placeholder))"
+        ]
+      },
+      {
         "name": "accordion",
         "instances": [
           ".tab-content-cq:has(.collapse.answer)"
@@ -77,8 +93,7 @@ const PAGE_TEMPLATE = {
       {
         "name": "embed-video",
         "instances": [
-          ".column:has(.cnt-video iframe[data-video-src]), .column:has(.cnt-video iframe[src*='youtube']), .column:has(.cnt-video iframe[src*='youtu.be'])",
-          ".cnt-video:not(.column .cnt-video):has(iframe[data-video-src]), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtube']), .cnt-video:not(.column .cnt-video):has(iframe[src*='youtu.be'])"
+          ".cnt-video:has(iframe[data-video-src]), .cnt-video:has(iframe[src*='youtube']), .cnt-video:has(iframe[src*='youtu.be'])"
         ]
       }
     ],
