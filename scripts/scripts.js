@@ -137,6 +137,12 @@ export function decorateMain(main) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  // Tag the homepage so page-specific styling can be scoped to it (the
+  // homepage has no template metadata). Matches /f35/, /f35/index, and root.
+  const { pathname } = window.location;
+  if (/^\/(f35\/)?(index)?$/.test(pathname) || /\/f35\/index(\.html)?$/.test(pathname)) {
+    document.body.classList.add('f35-home');
+  }
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);

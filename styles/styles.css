@@ -359,3 +359,28 @@ main .section.dark a:any-link {
 main a[href="about:blank"] {
   display: none;
 }
+
+/* Homepage-only: recolor the CTA buttons from blue/navy to brand green.
+   Scoped to body.f35-home (set in scripts.js) so interior pages keep their
+   blue CTAs. Covers the hero "Read More", the "Go To News" band CTA, and the
+   columns-promo "Learn More" buttons. */
+/* stylelint-disable no-descending-specificity -- intentional homepage-scoped
+   overrides of the (less-specific) block button rules; body.f35-home wins. */
+body.f35-home .cards-news-container > .default-content-wrapper a:any-link,
+body.f35-home .columns-promo a:any-link,
+body.f35-home .hero-masthead > div:last-child a:any-link {
+  background-color: var(--brand-green);
+  border-color: var(--brand-green);
+}
+
+body.f35-home .cards-news-container > .default-content-wrapper a:hover,
+body.f35-home .cards-news-container > .default-content-wrapper a:focus-visible,
+body.f35-home .columns-promo a:hover,
+body.f35-home .columns-promo a:focus-visible,
+body.f35-home .hero-masthead > div:last-child a:hover,
+body.f35-home .hero-masthead > div:last-child a:focus-visible {
+  background-color: var(--brand-green-dark);
+  border-color: var(--brand-green-dark);
+  color: #fff;
+}
+/* stylelint-enable no-descending-specificity */
