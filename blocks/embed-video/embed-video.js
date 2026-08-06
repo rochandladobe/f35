@@ -46,6 +46,19 @@ const loadEmbed = (wrapper, link) => {
   wrapper.dataset.embedLoaded = 'true';
 };
 
+/** Extract a YouTube video id from any watch/embed/youtu.be/shorts URL. */
+const youtubeId = (link) => {
+  try {
+    const url = new URL(link);
+    if (url.searchParams.get('v')) return url.searchParams.get('v');
+    if (url.hostname.includes('youtu.be')) return url.pathname.split('/')[1];
+    const parts = url.pathname.split('/');
+    const i = parts.findIndex((p) => p === 'embed' || p === 'shorts' || p === 'vi');
+    if (i >= 0 && parts[i + 1]) return parts[i + 1];
+  } catch (e) { /* ignore */ }
+  return '';
+};
+
 export default function decorate(block) {
   const items = [...block.children];
   block.dataset.count = items.length;
@@ -55,19 +68,37 @@ export default function decorate(block) {
 
     const link = row.querySelector('a[href]');
     if (!link) return;
+    const { href } = link;
 
     row.textContent = '';
 
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'embed-video-frame';
 
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        observer.disconnect();
-        loadEmbed(videoWrapper, link.href);
-      }
-    });
-    observer.observe(videoWrapper);
+    // Show a poster + play button immediately (reliable, fast); swap in the
+    // real iframe on click. For YouTube we can build the poster from the video
+    // id; otherwise we load the embed right away.
+    const ytId = /youtu/i.test(href) ? youtubeId(href) : '';
+    if (ytId) {
+      videoWrapper.classList.add('embed-video-poster');
+      videoWrapper.style.backgroundImage = `url("https://img.youtube.com/vi/${ytId}/maxresdefault.jpg")`;
+      videoWrapper.setAttribute('role', 'button');
+      videoWrapper.setAttribute('tabindex', '0');
+      videoWrapper.setAttribute('aria-label', 'Play video');
+      const play = document.createElement('span');
+      play.className = 'embed-video-play';
+      play.setAttribute('aria-hidden', 'true');
+      videoWrapper.append(play);
+      const start = () => loadEmbed(videoWrapper, href);
+      videoWrapper.addEventListener('click', start);
+      videoWrapper.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(); }
+      });
+    } else {
+      // Non-YouTube (e.g. Vimeo): load the embed immediately.
+      loadEmbed(videoWrapper, href);
+    }
+
     row.append(videoWrapper);
   });
 }
