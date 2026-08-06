@@ -81,10 +81,25 @@ export default function decorate(block) {
     const ytId = /youtu/i.test(href) ? youtubeId(href) : '';
     if (ytId) {
       videoWrapper.classList.add('embed-video-poster');
-      videoWrapper.style.backgroundImage = `url("https://img.youtube.com/vi/${ytId}/maxresdefault.jpg")`;
       videoWrapper.setAttribute('role', 'button');
       videoWrapper.setAttribute('tabindex', '0');
       videoWrapper.setAttribute('aria-label', 'Play video');
+      // Poster thumbnail. maxresdefault is the sharpest, but for videos that
+      // lack it YouTube returns a 120x90 grey placeholder (HTTP 200, so no
+      // error fires) — detect that by its tiny dimensions and fall back to
+      // hqdefault, which always exists at a usable size.
+      const poster = document.createElement('img');
+      poster.className = 'embed-video-poster-img';
+      poster.setAttribute('loading', 'lazy');
+      poster.setAttribute('alt', '');
+      const hq = () => { poster.src = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`; };
+      poster.addEventListener('error', hq, { once: true });
+      poster.addEventListener('load', () => {
+        if (poster.naturalWidth > 0 && poster.naturalWidth <= 120
+          && poster.src.includes('maxresdefault')) hq();
+      });
+      poster.src = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
+      videoWrapper.append(poster);
       const play = document.createElement('span');
       play.className = 'embed-video-play';
       play.setAttribute('aria-hidden', 'true');
